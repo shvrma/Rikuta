@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Gateway\" />
-    <Folder Include="Rest\" />
+    <Folder Include="NewFolder\" />
   </ItemGroup>
 
 </Project>
