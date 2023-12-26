@@ -21,7 +21,6 @@ namespace Rikuta.Models;
 /// Explicit annotation of value availability. 
 /// </param>
 public record struct Optional<ValueT>(ValueT Value, bool IsValueSet)
-    where ValueT : notnull
 {
     public static Optional<ValueT> Empty => new();
 
