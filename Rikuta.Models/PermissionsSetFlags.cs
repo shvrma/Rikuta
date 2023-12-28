@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 namespace Rikuta.Models;
 
 /// <summary>
-/// 
+/// A set of individual permissions with their appropriate bit flag.
 /// </summary>
+/// <remarks>
+/// All permissions names are mostly self-descriptive.
+/// </remarks>
 public enum PermissionsSetFlags : long
 {
     CreateInstantInvite = 1 << 0,

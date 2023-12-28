@@ -2,8 +2,8 @@
 
 public enum ApplicationCommandOptionTypes : byte
 {
-    SubCommand = 1,
-    SubCommandGroup = 2,
+    Subcommand = 1,
+    SubcommandGroup = 2,
     String = 3,
     Int = 4,
     Bool = 5,

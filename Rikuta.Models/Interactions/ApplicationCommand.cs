@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Rikuta.Helpers;
+using Rikuta.Models.Serialization;
 
 namespace Rikuta.Models.Interactions;
 
@@ -41,28 +41,24 @@ namespace Rikuta.Models.Interactions;
 /// Auto-incrementing version identifier updated during substantial record changes.
 /// </param>
 public sealed record ApplicationCommand(
-    [property: JsonRequired]
     [property: JsonPropertyName("id")]
     Snowflake ID,
 
-    [property: JsonPropertyName("type")] 
+    [property: JsonPropertyName("type")]
     Optional<ApplicationCommandTypes> CommandType,
 
-    [property: JsonRequired]
     [property: JsonPropertyName("application_id")]
     Snowflake ApplicationID,
 
     [property: JsonPropertyName("guild_id")]
     Optional<Snowflake> GuildID,
 
-    [property: JsonRequired]
     [property: JsonPropertyName("name")]
     string CommandName,
 
     [property: JsonPropertyName("name_localizations")]
     Optional<IDictionary<string, string>?> LocalizedCommandNames,
 
-    [property: JsonRequired]
     [property: JsonPropertyName("description")]
     string Description,
 
@@ -72,17 +68,15 @@ public sealed record ApplicationCommand(
     [property: JsonPropertyName("options")]
     Optional<ApplicationCommandOption[]> Options,
 
-    [property: JsonRequired]
     [property: JsonPropertyName("default_member_permissions")]
     PermissionsSet? DefaultMemberPermissions,
 
     [property: JsonPropertyName("dm_permission")]
     Optional<bool> IsDMAllowed,
 
-    [property: JsonPropertyName("nsfw")] 
+    [property: JsonPropertyName("nsfw")]
     Optional<bool> IsNsfw,
 
-    [property: JsonRequired]
     [property: JsonPropertyName("version")]
     Snowflake Version)
 {
@@ -94,5 +88,37 @@ public sealed record ApplicationCommand(
     public bool ValidateCommandName()
     {
         return Validation.ChatInputCommandNameAndOptionName().IsMatch(CommandName);
+    }
+
+    /// <summary>
+    /// Command options must be ordered such that required options precede optional ones.
+    /// </summary>
+    public bool ValidateCommandOptions()
+    {
+        var wasPreviousOptionRequired = true;
+        if (!Options.IsValueSet) return true;
+        foreach (var option in Options.Value)
+        {
+            if (option.IsRequired && !wasPreviousOptionRequired)
+                return false;
+
+            wasPreviousOptionRequired = option.IsRequired;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// This <see cref="PermissionsSet"/> specifies minimal possible <see cref="PermissionsSet"/>
+    /// for members to have to use this command.
+    /// </summary>
+    public static PermissionsSet MinimalMemberPermissions
+    {
+        get
+        {
+            PermissionsSet permissions = new();
+            permissions.AddPermission(PermissionsSetFlags.UseApplicationCommands);
+            return permissions;
+        }
     }
 }

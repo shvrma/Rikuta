@@ -20,15 +20,23 @@ public record GuildApplicationCommandPermissions(
     [property: JsonRequired]
     [property: JsonPropertyName("id")]
     Snowflake ID,
-    
+
     [property: JsonRequired]
     [property: JsonPropertyName("application_id")]
     Snowflake ApplicationID,
-    
+
     [property: JsonRequired]
     [property: JsonPropertyName("guild_id")]
     Snowflake GuildID,
-    
+
     [property: JsonRequired]
     [property: JsonPropertyName("permissions")]
-    ApplicationCommandPermissions[] Permissions);
+    ApplicationCommandPermissions[] Permissions)
+{
+    /// <summary>
+    /// Determines whether this permission applies to all
+    /// commands in the guild until some of them have an explicit overwrite.
+    /// </summary>
+    /// <remarks><inheritdoc cref="GuildApplicationCommandPermissions"/></remarks>
+    public bool IsDefaultPermission() => ID == ApplicationID;
+}
