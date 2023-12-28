@@ -40,6 +40,10 @@ namespace Rikuta.Models.Interactions;
 /// <param name="Version">
 /// Auto-incrementing version identifier updated during substantial record changes.
 /// </param>
+/// <remarks>
+/// If <see cref="CommandType"/> is <see cref="ApplicationCommandTypes.User"/> or
+/// <see cref="ApplicationCommandTypes.Message"/> <see cref="Description"/> field is not allowed.
+/// </remarks>
 public sealed record ApplicationCommand(
     [property: JsonPropertyName("id")]
     Snowflake ID,
@@ -112,12 +116,17 @@ public sealed record ApplicationCommand(
     /// This <see cref="PermissionsSet"/> specifies minimal possible <see cref="PermissionsSet"/>
     /// for members to have to use this command.
     /// </summary>
+    /// <remarks>
+    /// This includes <see cref="PermissionsSetFlags.UseApplicationCommands"/> permission for the slash
+    /// command and <see cref="PermissionsSetFlags.SendMessages"/> for user commands to be able to execute.
+    /// </remarks>
     public static PermissionsSet MinimalMemberPermissions
     {
         get
         {
             PermissionsSet permissions = new();
             permissions.AddPermission(PermissionsSetFlags.UseApplicationCommands);
+            permissions.AddPermission(PermissionsSetFlags.SendMessages);
             return permissions;
         }
     }
