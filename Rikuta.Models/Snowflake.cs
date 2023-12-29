@@ -8,4 +8,7 @@ namespace Rikuta.Models;
 /// An identifier object that is used across Discord's internal system.
 /// </summary>
 /// <param name="Value">An underlying value of Snowflake.</param>
-public readonly record struct Snowflake(ulong Value);
+public readonly record struct Snowflake(ulong Value)
+{
+    public override string ToString() => Value.ToString();
+}
