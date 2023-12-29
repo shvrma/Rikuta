@@ -1,13 +1,11 @@
 ﻿using System.Net;
-using JetBrains.Annotations;
 using Refit;
 using Rikuta.Models;
-using Rikuta.Models.Interactions.ApplicationCommands;
-using Rikuta.Models.Rest.RequestModel.ApplicationCommands;
+using Rikuta.Models.Interactions;
+using Rikuta.Models.RequestModel;
 
 namespace Rikuta.REST;
 
-[PublicAPI]
 public interface IDiscordApplicationsApi
 {
     #region Application commands
@@ -29,17 +27,13 @@ public interface IDiscordApplicationsApi
     /// <see cref="ApplicationCommand.LocalizedDescriptions"/>) in
     /// the returned objects. Default <c>false</c>.
     /// </param>
-    [Get(
-        "/applications/{applicationID.Value}/commands?with_localizations={includeLocalization}")]
+    [Get("/applications/{applicationID.Value}/commands?with_localizations={includeLocalization}")]
     Task<ApplicationCommand[]> GetGlobalApplicationCommandsAsync(
         Snowflake applicationID, bool? includeLocalization = false);
 
     [Post("/applications/{applicationID.Value}/commands")]
-    internal Task<ApiResponse<ApplicationCommand>>
-        CreateGlobalApplicationCommandInternalAsync(
-            Snowflake applicationID,
-            [Body]
-            CreateGlobalApplicationCommandRequestModel command);
+    internal Task<ApiResponse<ApplicationCommand>> CreateGlobalApplicationCommandInternalAsync(
+        Snowflake applicationID, [Body] CreateGlobalApplicationCommandRequestModel command);
 
     /// <summary>
     /// Create a new global command. Returns <c>false</c> as the value
@@ -62,25 +56,17 @@ public interface IDiscordApplicationsApi
     /// command was overwritten or added, and the second parameter is
     /// the command itself.
     /// </returns>
-    async Task<(bool WasCommandOverwritten, ApplicationCommand command
-        )> CreateGlobalApplicationCommandAsync(
-        Snowflake applicationID,
-        CreateGlobalApplicationCommandRequestModel command)
+    async Task<(bool WasCommandOverwritten, ApplicationCommand command)> CreateGlobalApplicationCommandAsync(
+        Snowflake applicationID, CreateGlobalApplicationCommandRequestModel command)
     {
-        ApiResponse<ApplicationCommand> response =
-            await CreateGlobalApplicationCommandInternalAsync(
-                applicationID, command);
+        ApiResponse<ApplicationCommand> response = await CreateGlobalApplicationCommandInternalAsync(applicationID, command);
 
         // ReSharper disable once SwitchExpressionHandlesSomeKnownEnumValuesWithExceptionInDefault
         return response.StatusCode switch
         {
-            HttpStatusCode.OK => (WasCommandOverwritten: true,
-                response.Content!),
-            HttpStatusCode.Created => (WasCommandOverwritten: false,
-                response.Content!),
-            _ => throw new Exception(
-                $"Unexpected status code: {response.StatusCode}.",
-                response.Error)
+            HttpStatusCode.OK => (WasCommandOverwritten: true, response.Content!),
+            HttpStatusCode.Created => (WasCommandOverwritten: false, response.Content!),
+            _ => throw new Exception($"Unexpected status code: {response.StatusCode}.", response.Error)
         };
     }
 
@@ -93,8 +79,7 @@ public interface IDiscordApplicationsApi
     /// <param name="commandID">
     /// A <see cref="Snowflake"/> command ID.
     /// </param>
-    [Get(
-        "/applications/{applicationID.Value}/commands/{commandID.Value}")]
+    [Get("/applications/{applicationID.Value}/commands/{commandID.Value}")]
     Task<ApplicationCommand> GetGlobalApplicationCommandAsync(
         Snowflake applicationID, Snowflake commandID);
 
@@ -118,8 +103,7 @@ public interface IDiscordApplicationsApi
     /// <returns>
     /// Returns an edited <see cref="ApplicationCommand"/> object.
     /// </returns>
-    [Patch(
-        "/applications/{applicationID.Value}/commands/{commandID.Value}")]
+    [Patch("/applications/{applicationID.Value}/commands/{commandID.Value}")]
     Task<ApplicationCommand> EditGlobalApplicationCommandAsync(
         Snowflake applicationID, Snowflake commandID,
         [Body] EditGlobalApplicationCommandRequestModel command);
@@ -133,8 +117,7 @@ public interface IDiscordApplicationsApi
     /// <param name="commandID">
     /// A <see cref="Snowflake"/> command ID.
     /// </param>
-    [Delete(
-        "/applications/{applicationID.Value}/commands/{commandID.Value}")]
+    [Delete("/applications/{applicationID.Value}/commands/{commandID.Value}")]
     Task DeleteGlobalApplicationCommandAsync(
         Snowflake applicationID, Snowflake commandID);
 
@@ -158,10 +141,8 @@ public interface IDiscordApplicationsApi
     /// An array of newly overwritten application commands.
     /// </returns>
     [Put("/applications/{applicationID.Value}/commands")]
-    Task<ApplicationCommand[]>
-        BulkOverwriteGlobalApplicationCommandsAsync(
-            Snowflake applicationID,
-            [Body] IEnumerable<ApplicationCommand> commands);
+    Task<ApplicationCommand[]> BulkOverwriteGlobalApplicationCommandsAsync(
+        Snowflake applicationID, [Body] IEnumerable<ApplicationCommand> commands);
 
     /// <summary>
     /// Fetch all the guild commands for your application for a
@@ -184,18 +165,14 @@ public interface IDiscordApplicationsApi
     /// and <see cref="ApplicationCommand.LocalizedDescriptions"/>)
     /// in the returned objects. Default <c>false</c>.
     /// </param>
-    [Get(
-        "/applications/{applicationID.Value}/guilds/{guildID.Value}/commands?with_localizations={includeLocalization}")]
+    [Get("/applications/{applicationID.Value}/guilds/{guildID.Value}/commands?with_localizations={includeLocalization}")]
     Task<ApplicationCommand[]> GetGuildApplicationCommandsAsync(
-        Snowflake applicationID, Snowflake guildID,
-        bool? includeLocalization = false);
+        Snowflake applicationID, Snowflake guildID, bool? includeLocalization = false);
 
-    [Post(
-        "/applications/{applicationID.Value}/guilds/{guildID.Value}/commands")]
-    internal Task<ApiResponse<ApplicationCommand>>
-        CreateGuildApplicationCommandInternalAsync(
-            Snowflake applicationID, Snowflake guildID,
-            CreateGuildApplicationCommandRequestModel command);
+    [Post("/applications/{applicationID.Value}/guilds/{guildID.Value}/commands")]
+    internal Task<ApiResponse<ApplicationCommand>> CreateGuildApplicationCommandInternalAsync(
+        Snowflake applicationID, Snowflake guildID, 
+        CreateGuildApplicationCommandRequestModel command);
 
     /// <summary>
     /// Create a new guild command.
@@ -218,25 +195,19 @@ public interface IDiscordApplicationsApi
     /// A <see cref="Tuple"/> with a parameter specifying whether the command was
     /// overwritten or added, and the second parameter is the command itself.
     /// </returns>
-    async Task<(bool WasCommandOverwritten, ApplicationCommand command
-        )> CreateGuildApplicationCommandAsync(
-        Snowflake applicationID, Snowflake guildID,
+    async Task<(bool WasCommandOverwritten, ApplicationCommand command)> CreateGuildApplicationCommandAsync(
+        Snowflake applicationID, Snowflake guildID, 
         CreateGuildApplicationCommandRequestModel command)
     {
-        ApiResponse<ApplicationCommand> response =
-            await CreateGuildApplicationCommandInternalAsync(
-                applicationID, guildID, command);
+        ApiResponse<ApplicationCommand> response = await CreateGuildApplicationCommandInternalAsync(
+            applicationID, guildID, command);
 
         // ReSharper disable once SwitchExpressionHandlesSomeKnownEnumValuesWithExceptionInDefault
         return response.StatusCode switch
         {
-            HttpStatusCode.OK => (WasCommandOverwritten: true,
-                response.Content!),
-            HttpStatusCode.Created => (WasCommandOverwritten: false,
-                response.Content!),
-            _ => throw new Exception(
-                $"Unexpected status code: {response.StatusCode}.",
-                response.Error)
+            HttpStatusCode.OK => (WasCommandOverwritten: true, response.Content!),
+            HttpStatusCode.Created => (WasCommandOverwritten: false, response.Content!),
+            _ => throw new Exception($"Unexpected status code: {response.StatusCode}.", response.Error)
         };
     }
 
@@ -252,11 +223,9 @@ public interface IDiscordApplicationsApi
     /// <param name="commandID">
     /// A <see cref="Snowflake"/> command ID.
     /// </param>
-    [Get(
-        "/applications/{applicationID.Value}/guilds/{guildID.Value}/commands/{commandID.Value}")]
+    [Get("/applications/{applicationID.Value}/guilds/{guildID.Value}/commands/{commandID.Value}")]
     Task<ApplicationCommand> GetGuildApplicationCommandAsync(
-        Snowflake applicationID, Snowflake guildID,
-        Snowflake commandID);
+        Snowflake applicationID, Snowflake guildID, Snowflake commandID);
 
     /// <summary>
     /// Edit a guild command.
@@ -282,11 +251,9 @@ public interface IDiscordApplicationsApi
     /// <returns>
     /// Returns an edited <see cref="ApplicationCommand"/> object.
     /// </returns>
-    [Patch(
-        "/applications/{applicationID.Value}/guilds/{guildID.Value}/commands/{commandID.Value}")]
+    [Patch("/applications/{applicationID.Value}/guilds/{guildID.Value}/commands/{commandID.Value}")]
     Task<ApplicationCommand> EditGuildApplicationCommandAsync(
-        Snowflake applicationID, Snowflake guildID,
-        Snowflake commandID,
+        Snowflake applicationID, Snowflake guildID, Snowflake commandID,
         [Body] EditGuildApplicationCommandRequestModel command);
 
     /// <summary>
@@ -301,11 +268,9 @@ public interface IDiscordApplicationsApi
     /// <param name="commandID">
     /// A <see cref="Snowflake"/> command ID.
     /// </param>
-    [Delete(
-        "/applications/{applicationID.Value}/guilds/{guildID.Value}/commands/{commandID.Value}")]
+    [Delete("/applications/{applicationID.Value}/guilds/{guildID.Value}/commands/{commandID.Value}")]
     Task DeleteGuildApplicationCommandAsync(
-        Snowflake applicationID, Snowflake guildID,
-        Snowflake commandID);
+        Snowflake applicationID, Snowflake guildID, Snowflake commandID);
 
     /// <summary>
     /// Takes a list of application commands, overwriting
@@ -328,12 +293,10 @@ public interface IDiscordApplicationsApi
     /// <returns>
     /// An overwritten commands.
     /// </returns>
-    [Put(
-        "/applications/{applicationID.Value}/guilds/{guildID.Value}/commands")]
-    Task<ApplicationCommand[]>
-        BulkOverwriteGuildApplicationCommandsAsync(
-            Snowflake applicationID, Snowflake guildID,
-            [Body] IEnumerable<ApplicationCommand> commands);
+    [Put("/applications/{applicationID.Value}/guilds/{guildID.Value}/commands")]
+    Task<ApplicationCommand[]> BulkOverwriteGuildApplicationCommandsAsync(
+        Snowflake applicationID, Snowflake guildID,
+        [Body] IEnumerable<ApplicationCommand> commands);
 
     /// <summary>
     /// Fetches permissions for all commands for your
@@ -345,11 +308,9 @@ public interface IDiscordApplicationsApi
     /// <param name="guildID">
     /// A <see cref="Snowflake"/> ID of the guild to get commands from.
     /// </param>
-    [Get(
-        "/applications/{applicationID.Value}/guilds/{guildID.Value}/commands/permissions")]
-    Task<GuildApplicationCommandPermissions[]>
-        GetGuildApplicationCommandPermissionsAsync(
-            Snowflake applicationID, Snowflake guildID);
+    [Get("/applications/{applicationID.Value}/guilds/{guildID.Value}/commands/permissions")]
+    Task<GuildApplicationCommandPermissions[]> GetGuildApplicationCommandPermissionsAsync(
+        Snowflake applicationID, Snowflake guildID);
 
     /// <summary>
     /// Fetches permissions for a specific command for your
@@ -364,12 +325,9 @@ public interface IDiscordApplicationsApi
     /// <param name="commandID">
     /// A <see cref="Snowflake"/> command ID.
     /// </param>
-    [Get(
-        "/applications/{applicationID.Value}/guilds/{guildID.Value}/commands/{commandID.Value}/permissions")]
-    Task<GuildApplicationCommandPermissions>
-        GetApplicationCommandPermissions(
-            Snowflake applicationID, Snowflake guildID,
-            Snowflake commandID);
+    [Get("/applications/{applicationID.Value}/guilds/{guildID.Value}/commands/{commandID.Value}/permissions")]
+    Task<GuildApplicationCommandPermissions> GetApplicationCommandPermissions(
+        Snowflake applicationID, Snowflake guildID, Snowflake commandID);
 
     /// <summary>
     /// Edits command permissions for a specific command for
@@ -401,14 +359,10 @@ public interface IDiscordApplicationsApi
     /// <returns>
     /// Returns a new state of permissions of a given command in an appropriate guild.
     /// </returns>
-    [Put(
-        "/applications/{applicationID.Value}/guilds/{guildID.Value}/commands/{commandID.Value}/permissions")]
-    Task<GuildApplicationCommandPermissions>
-        EditApplicationCommandPermissionsAsync(
-            Snowflake applicationID, Snowflake guildID,
-            Snowflake commandID,
-            [Body]
-            IEnumerable<ApplicationCommandPermissions> permissions);
+    [Put("/applications/{applicationID.Value}/guilds/{guildID.Value}/commands/{commandID.Value}/permissions")]
+    Task<GuildApplicationCommandPermissions> EditApplicationCommandPermissionsAsync(
+        Snowflake applicationID, Snowflake guildID, Snowflake commandID,
+        [Body] IEnumerable<ApplicationCommandPermissions> permissions);
 
     #endregion
 }
