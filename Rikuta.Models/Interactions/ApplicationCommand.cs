@@ -40,6 +40,18 @@ namespace Rikuta.Models.Interactions;
 /// <param name="Version">
 /// Auto-incrementing version identifier updated during substantial record changes.
 /// </param>
+/// <param name="LocalizedCommandName">
+/// Represents localized command name according to user's locale.
+/// This property is only included in response to some endpoints,
+/// especially GET endpoints that return a generalized list of all commands.
+/// You must not include this in the request. 
+/// </param>
+/// <param name="LocalizedDescription">
+/// Represents localized command description according to user's locale.
+/// This property is only included in response to some endpoints,
+/// especially GET endpoints that return a generalized list of all commands.
+/// You must not include this in the request. 
+/// </param>
 /// <remarks>
 /// If <see cref="CommandType"/> is <see cref="ApplicationCommandTypes.User"/> or
 /// <see cref="ApplicationCommandTypes.Message"/> <see cref="Description"/> field is not allowed.
@@ -82,7 +94,13 @@ public sealed record ApplicationCommand(
     Optional<bool> IsNsfw,
 
     [property: JsonPropertyName("version")]
-    Snowflake Version)
+    Snowflake Version,
+    
+    [property: JsonPropertyName("name_localized")]
+    Optional<string> LocalizedCommandName,
+    
+    [property: JsonPropertyName("description_localized")]
+    Optional<string> LocalizedDescription)
 {
     /// <summary>
     /// Validates command name according to <see href="https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-naming">
@@ -117,17 +135,16 @@ public sealed record ApplicationCommand(
     /// for members to have to use this command.
     /// </summary>
     /// <remarks>
-    /// This includes <see cref="PermissionsSetFlags.UseApplicationCommands"/> permission for the slash
-    /// command and <see cref="PermissionsSetFlags.SendMessages"/> for user commands to be able to execute.
+    /// This is equal to the <c>null</c> string for the <see cref="PermissionsSet"/>. 
     /// </remarks>
-    public static PermissionsSet MinimalMemberPermissions
-    {
-        get
-        {
-            PermissionsSet permissions = new();
-            permissions.AddPermission(PermissionsSetFlags.UseApplicationCommands);
-            permissions.AddPermission(PermissionsSetFlags.SendMessages);
-            return permissions;
-        }
-    }
+    public static PermissionsSet MinimalMemberPermissions => new(null);
+
+    /// <summary>
+    /// Restrict everyone, except admins, from using the command (if not overwritten).
+    /// </summary>
+    /// <remarks>
+    /// This is equal to the <c>0</c> string for the <see cref="PermissionsSet"/>.
+    /// The string value of <c>0</c> acts differently from the default permissions system.
+    /// </remarks>
+    public static PermissionsSet RestrictEveryonePermissions => new("0");
 }

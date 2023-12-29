@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Rikuta.Helpers\Rikuta.Helpers.csproj" />
+    <ProjectReference Include="..\Rikuta.Models\Rikuta.Models.csproj" />
   </ItemGroup>
 
 </Project>
