@@ -1,13 +1,8 @@
-﻿using Rikuta.Models.Interactions;
+﻿using System.ComponentModel.DataAnnotations;
+using Rikuta.Models.Interactions;
 using Rikuta.Models.Serialization;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Rikuta.Models.RequestModel;
+namespace Rikuta.Models.RequestModel.ApplicationCommands;
 
 /// <summary>
 /// Contain parameters used to pass in the <see href="https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command">Edit Global Application Command</see> endpoint.

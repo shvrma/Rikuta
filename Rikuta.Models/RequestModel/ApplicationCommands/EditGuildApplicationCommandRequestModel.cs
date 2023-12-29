@@ -2,10 +2,10 @@
 using Rikuta.Models.Interactions;
 using Rikuta.Models.Serialization;
 
-namespace Rikuta.Models.RequestModel;
+namespace Rikuta.Models.RequestModel.ApplicationCommands;
 
 /// <summary>
-/// Contain parameters used to pass in the <see href="https://discord.com/developers/docs/interactions/application-commands#create-guild-application-command">Create Guild Application Command</see> endpoint.
+/// Contain parameters used to pass in the <see href="https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command">Edit Guild Application Command</see> endpoint.
 /// </summary>
 /// <param name="Name">	Name of command.</param>
 /// <param name="LocalizedName">Localization dictionary for the <see cref="Name"/>.</param>
@@ -16,7 +16,7 @@ namespace Rikuta.Models.RequestModel;
 /// <param name="Type">Command type.</param>
 /// <param name="IsNsfwCommand">Indicates whether the command is age-restricted.</param>
 [JsonSerializable]
-public record CreateGuildApplicationCommandRequestModel(
+public record EditGuildApplicationCommandRequestModel(
     [property: JsonPropertyName("name")]
     [property: StringLength(32, MinimumLength = 1)]
     string Name,

@@ -2,10 +2,10 @@
 using Rikuta.Models.Interactions;
 using Rikuta.Models.Serialization;
 
-namespace Rikuta.Models.RequestModel.ApplicatioonCommands;
+namespace Rikuta.Models.RequestModel.ApplicationCommands;
 
 /// <summary>
-/// Contain parameters used to pass in the <see href="https://discord.com/developers/docs/interactions/application-commands#create-global-application-command">Create Global Application Command</see> endpoint.
+/// Contain parameters used to pass in the <see href="https://discord.com/developers/docs/interactions/application-commands#create-guild-application-command">Create Guild Application Command</see> endpoint.
 /// </summary>
 /// <param name="Name">	Name of command.</param>
 /// <param name="LocalizedName">Localization dictionary for the <see cref="Name"/>.</param>
@@ -13,11 +13,10 @@ namespace Rikuta.Models.RequestModel.ApplicatioonCommands;
 /// <param name="LocalizedDescription">Localization dictionary for the <see cref="Description"/>.</param>
 /// <param name="Options">The parameters for the command</param>
 /// <param name="DefaultRequiredMemberPermissions">Set of permissions for the user to be able to execute the command.</param>
-/// <param name="IsDMAllowed">Whether this command is allowed in DM.</param>
 /// <param name="Type">Command type.</param>
 /// <param name="IsNsfwCommand">Indicates whether the command is age-restricted.</param>
 [JsonSerializable]
-public record CreateGlobalApplicationCommandRequestModel(
+public record CreateGuildApplicationCommandRequestModel(
     [property: JsonPropertyName("name")]
     [property: StringLength(32, MinimumLength = 1)]
     string Name,
@@ -37,9 +36,6 @@ public record CreateGlobalApplicationCommandRequestModel(
 
     [property: JsonPropertyName("default_member_permissions")]
     Optional<PermissionsSet> DefaultRequiredMemberPermissions,
-
-    [property: JsonPropertyName("dm_permission")]
-    Optional<bool?> IsDMAllowed,
 
     [property: JsonPropertyName("type")]
     Optional<ApplicationCommandTypes> Type,
