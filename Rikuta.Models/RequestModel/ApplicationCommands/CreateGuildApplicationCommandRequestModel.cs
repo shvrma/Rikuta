@@ -2,7 +2,7 @@
 using Rikuta.Models.Interactions;
 using Rikuta.Models.Serialization;
 
-namespace Rikuta.Models.RequestModel;
+namespace Rikuta.Models.RequestModel.ApplicationCommands;
 
 /// <summary>
 /// Contain parameters used to pass in the <see href="https://discord.com/developers/docs/interactions/application-commands#create-guild-application-command">Create Guild Application Command</see> endpoint.
@@ -20,25 +20,25 @@ public record CreateGuildApplicationCommandRequestModel(
     [property: JsonPropertyName("name")]
     [property: StringLength(32, MinimumLength = 1)]
     string Name,
-    
+
     [property: JsonPropertyName("name_localizations")]
     Optional<IDictionary<string, string>?> LocalizedName,
-    
+
     [property: JsonPropertyName("description")]
     [property: StringLength(100, MinimumLength = 1)]
     Optional<string> Description,
-    
+
     [property: JsonPropertyName("description_localizations")]
     Optional<IDictionary<string, string>?> LocalizedDescription,
-    
+
     [property: JsonPropertyName("options")]
     Optional<ApplicationCommandOption[]> Options,
-    
+
     [property: JsonPropertyName("default_member_permissions")]
     Optional<PermissionsSet> DefaultRequiredMemberPermissions,
-    
+
     [property: JsonPropertyName("type")]
     Optional<ApplicationCommandTypes> Type,
-    
+
     [property: JsonPropertyName("nsfw")]
     Optional<bool> IsNsfwCommand);

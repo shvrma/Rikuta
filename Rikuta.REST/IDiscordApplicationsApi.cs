@@ -2,7 +2,7 @@
 using Refit;
 using Rikuta.Models;
 using Rikuta.Models.Interactions;
-using Rikuta.Models.RequestModel;
+using Rikuta.Models.RequestModel.ApplicationCommands;
 
 namespace Rikuta.REST;
 

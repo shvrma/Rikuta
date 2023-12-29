@@ -2,10 +2,10 @@
 using Rikuta.Models.Interactions;
 using Rikuta.Models.Serialization;
 
-namespace Rikuta.Models.RequestModel;
+namespace Rikuta.Models.RequestModel.ApplicationCommands;
 
 /// <summary>
-/// Contain parameters used to pass in the <see href="https://discord.com/developers/docs/interactions/application-commands#create-global-application-command">Create Global Application Command</see> endpoint.
+/// Contain parameters used to pass in the <see href="https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command">Edit Global Application Command</see> endpoint.
 /// </summary>
 /// <param name="Name">	Name of command.</param>
 /// <param name="LocalizedName">Localization dictionary for the <see cref="Name"/>.</param>
@@ -14,10 +14,9 @@ namespace Rikuta.Models.RequestModel;
 /// <param name="Options">The parameters for the command</param>
 /// <param name="DefaultRequiredMemberPermissions">Set of permissions for the user to be able to execute the command.</param>
 /// <param name="IsDMAllowed">Whether this command is allowed in DM.</param>
-/// <param name="Type">Command type.</param>
 /// <param name="IsNsfwCommand">Indicates whether the command is age-restricted.</param>
 [JsonSerializable]
-public record CreateGlobalApplicationCommandRequestModel(
+public record EditGlobalApplicationCommandRequestModel(
     [property: JsonPropertyName("name")]
     [property: StringLength(32, MinimumLength = 1)]
     string Name,
@@ -32,7 +31,7 @@ public record CreateGlobalApplicationCommandRequestModel(
     [property: JsonPropertyName("description_localizations")]
     Optional<IDictionary<string, string>?> LocalizedDescription,
     
-    [property: JsonPropertyName("options")]
+    [property: JsonPropertyName("options")] 
     Optional<ApplicationCommandOption[]> Options,
     
     [property: JsonPropertyName("default_member_permissions")]
@@ -40,9 +39,6 @@ public record CreateGlobalApplicationCommandRequestModel(
     
     [property: JsonPropertyName("dm_permission")]
     Optional<bool?> IsDMAllowed,
-    
-    [property: JsonPropertyName("type")]
-    Optional<ApplicationCommandTypes> Type,
     
     [property: JsonPropertyName("nsfw")]
     Optional<bool> IsNsfwCommand);
