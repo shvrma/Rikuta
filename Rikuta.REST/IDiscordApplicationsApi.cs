@@ -1,11 +1,13 @@
 ﻿using System.Net;
+using JetBrains.Annotations;
 using Refit;
 using Rikuta.Models;
-using Rikuta.Models.Interactions;
-using Rikuta.Models.RequestModel.ApplicationCommands;
+using Rikuta.Models.Interactions.ApplicationCommands;
+using Rikuta.Models.Rest.RequestModel.ApplicationCommands;
 
 namespace Rikuta.REST;
 
+[PublicAPI]
 public interface IDiscordApplicationsApi
 {
     #region Application commands

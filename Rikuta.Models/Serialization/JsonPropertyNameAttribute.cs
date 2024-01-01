@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JetBrains.Annotations;
 
 namespace Rikuta.Models.Serialization;
 
 /// <summary>
-/// Specifies the property name in the appropriate JSON object.
+///     Overrides property name that appears in JSON object.
 /// </summary>
-/// <param name="name">Property name.</param>
-[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
+/// <param name="name">
+///     Property name to be used in JSON.
+/// </param>
+[PublicAPI]
+[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 public class JsonPropertyNameAttribute(string name) : Attribute;
