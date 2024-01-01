@@ -10,6 +10,10 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 /// <param name="ID">
 ///     Command identifier.
 /// </param>
+/// <param name="CommandType">
+///     Type of command; defaults to
+///     <see cref="ApplicationCommandTypes.ChatInput" />.
+/// </param>
 /// <param name="ApplicationID">
 ///     An application identifier this command belongs to.
 /// </param>
@@ -19,28 +23,51 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 /// </param>
 /// <param name="CommandName">
 ///     Name of command.
+///     <para> 1-32 characters long. </para>
 /// </param>
 /// <param name="LocalizedCommandNames">
 ///     Localization dictionary for <see cref="CommandName" /> field.
+///     Values follow the same restrictions as
+///     <see cref="CommandName" />.
 /// </param>
 /// <param name="Description">
 ///     Description for
 ///     <see cref="ApplicationCommandTypes.ChatInput" /> commands.
+///     <para>
+///         1-100
+///         characters long.
+///     </para>
+///     <para>
+///         Empty for <see cref="ApplicationCommandTypes.User" />
+///         and <see cref="ApplicationCommandTypes.Message" /> commands.
+///     </para>
 /// </param>
 /// <param name="LocalizedDescriptions">
 ///     Localization dictionary for <see cref="Description" /> field.
+///     Values follow the same restrictions as
+///     <see cref="Description" />.
 /// </param>
 /// <param name="Options">
 ///     Parameters for the command. Used only in
-///     <see cref="ApplicationCommandTypes.ChatInput" /> commands.
+///     <see cref="ApplicationCommandTypes.ChatInput" /> commands;
+///     <para>max. of 25.</para>
 /// </param>
 /// <param name="DefaultMemberPermissions">
 ///     Set of permissions for the user to be able to execute the
 ///     command.
 /// </param>
+/// <param name="IsDMAllowed">
+///     Indicates whether the command is available in DMs with the app;
+///     only for globally-scoped commands. By default, commands are
+///     visible.
+/// </param>
 /// <param name="Version">
 ///     Auto-incrementing version identifier updated during
 ///     substantial record changes.
+/// </param>
+/// <param name="IsNsfw">
+///     Indicates whether the command is age-restricted, defaults to
+///     <c> false </c>.
 /// </param>
 /// <param name="LocalizedCommandName">
 ///     Represents localized command name according to user's
@@ -101,39 +128,39 @@ public sealed record ApplicationCommand(
     ///     for members to have to use this command.
     /// </summary>
     /// <remarks>
-    ///     This is equal to the <c>null</c> string for the
+    ///     This is equal to the <c> null </c> string for the
     ///     <see cref="PermissionsString" />.
     /// </remarks>
-    public static PermissionsString MinimalMemberPermissions => new(null);
+    public static PermissionsString MinimalMemberPermissions
+        => new(null);
 
     /// <summary>
     ///     Restrict everyone, except admins, from using the
     ///     command (if not overwritten).
     /// </summary>
     /// <remarks>
-    ///     This is equal to the <c>0</c> string for the
+    ///     This is equal to the <c> 0 </c> string for the
     ///     <see cref="PermissionsString" />.
-    ///     The string value of <c>0</c> acts differently from
+    ///     The string value of <c> 0 </c> acts differently from
     ///     the default permissions system.
     /// </remarks>
-    public static PermissionsString RestrictEveryonePermissions => new("0");
+    public static PermissionsString RestrictEveryonePermissions
+        => new("0");
 
     /// <summary>
     ///     Validates command name according to
     ///     <see
     ///         href="https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-naming">
     ///         Discord's requirements
-    ///     </see>
-    ///     .
+    ///     </see>.
     /// </summary>
     /// <returns>
     ///     Whether the <see cref="CommandName" /> matches the
     ///     regex or not.
     /// </returns>
     public bool ValidateCommandName()
-    {
-        return Validation.ChatInputCommandNameAndOptionName().IsMatch(input: CommandName);
-    }
+        => Validation.ChatInputCommandNameAndOptionName()
+            .IsMatch(input: CommandName);
 
     /// <summary>
     ///     Command options must be ordered such that required
@@ -143,10 +170,11 @@ public sealed record ApplicationCommand(
     {
         if (!Options.IsValueSet) return true;
 
-        var wasPreviousOptionRequired = true;
+        bool wasPreviousOptionRequired = true;
         foreach (ApplicationCommandOption option in Options.Value)
         {
-            if (option.IsRequired && !wasPreviousOptionRequired) return false;
+            if (option.IsRequired && !wasPreviousOptionRequired)
+                return false;
 
             wasPreviousOptionRequired = option.IsRequired;
         }

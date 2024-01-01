@@ -19,34 +19,40 @@ public record PartialEmoji(
     Snowflake? ID,
     string? Name,
     Optional<bool> IsAnimated) : Emoji(
-    ID,
-    Name,
-    Optional<Snowflake[]>.Empty,
-    Optional<User>.Empty,
-    Optional<bool>.Empty,
-    Optional<bool>.Empty,
-    IsAnimated,
-    Optional<bool>.Empty)
+        ID,
+        Name,
+        Optional<Snowflake[]>.Empty,
+        Optional<User>.Empty,
+        Optional<bool>.Empty,
+        Optional<bool>.Empty,
+        IsAnimated,
+        Optional<bool>.Empty)
 {
-    private const string PartialDataUnavailableExceptionMessage = "";
+    private const string PartialDataUnavailableExceptionMessage =
+            "This data is not available on the partial entity.";
 
     /// <inheritdoc cref="Emoji.AllowedRoles" />
     public new Optional<Snowflake[]> AllowedRoles =>
-        throw new NotSupportedException(PartialDataUnavailableExceptionMessage);
+            throw new NotSupportedException(
+                    PartialDataUnavailableExceptionMessage);
 
     /// <inheritdoc cref="Emoji.User" />
     public new Optional<User> User =>
-        throw new NotSupportedException(PartialDataUnavailableExceptionMessage);
+            throw new NotSupportedException(
+                    PartialDataUnavailableExceptionMessage);
 
     /// <inheritdoc cref="Emoji.RequireColons" />
     public new Optional<bool> RequireColons =>
-        throw new NotSupportedException(PartialDataUnavailableExceptionMessage);
+            throw new NotSupportedException(
+                    PartialDataUnavailableExceptionMessage);
 
     /// <inheritdoc cref="Emoji.IsManaged" />
     public new Optional<bool> IsManaged =>
-        throw new NotSupportedException(PartialDataUnavailableExceptionMessage);
+            throw new NotSupportedException(
+                    PartialDataUnavailableExceptionMessage);
 
     /// <inheritdoc cref="Emoji.IsUsable" />
     public new Optional<bool> IsUsable =>
-        throw new NotSupportedException(PartialDataUnavailableExceptionMessage);
+            throw new NotSupportedException(
+                    PartialDataUnavailableExceptionMessage);
 }

@@ -30,8 +30,7 @@ namespace Rikuta.Models.Permissions;
 ///     <see
 ///         href="https://discord.com/developers/docs/reference#image-formatting">
 ///         there
-///     </see>
-///     .
+///     </see>.
 /// </param>
 /// <param name="UnicodeEmoji">
 ///     Role Unicode emoji.

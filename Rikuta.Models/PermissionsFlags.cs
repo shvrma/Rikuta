@@ -1,4 +1,6 @@
-﻿namespace Rikuta.Models;
+﻿using JetBrains.Annotations;
+
+namespace Rikuta.Models;
 
 /// <summary>
 ///     A set of individual permissions with their appropriate bit flag.
@@ -6,6 +8,7 @@
 /// <remarks>
 ///     All permissions names are mostly self-descriptive.
 /// </remarks>
+[PublicAPI]
 public enum PermissionsFlags : long
 {
     CreateInstantInvite              = 1L << 0,

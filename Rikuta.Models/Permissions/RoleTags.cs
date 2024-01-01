@@ -10,14 +10,13 @@ namespace Rikuta.Models.Permissions;
 ///     Optional properties of type <see cref="object" /> are
 ///     treated as booleans. Their underlying value is always
 ///     null, but if the <see cref="Optional{T}.IsValueSet" />
-///     property is set to true, it means the corresponding
+///     property is set to <c>true</c>, it means the corresponding
 ///     JSON property is also true, otherwise, it's false.
 ///     Read about it
 ///     <see
 ///         href="https://discord.com/developers/docs/topics/permissions#role-object-role-tags-structure">
 ///         there
-///     </see>
-///     .
+///     </see>.
 /// </remarks>
 /// <param name="BotID">
 ///     If present, the ID of the bot this role belongs to.

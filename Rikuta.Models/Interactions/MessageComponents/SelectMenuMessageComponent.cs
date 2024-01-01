@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using Rikuta.Models.Resources;
 using Rikuta.Models.Serialization;
 
 namespace Rikuta.Models.Interactions.MessageComponents;
@@ -42,12 +43,12 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     <paramref name="MaxValues" />.
 /// </param>
 /// <param name="MinValues">
-///     Minimum number of items that must be chosen (defaults to 1); min.
-///     0, max. 25.
+///     Minimum number of items that must be chosen (defaults to 1);
+///     min. 0, max. 25.
 /// </param>
 /// <param name="MaxValues">
-///     Maximum number of items that can be chosen (defaults to 1); max.
-///     25.
+///     Maximum number of items that can be chosen (defaults to 1);
+///     max. 25.
 /// </param>
 /// <param name="IsDisabled">
 ///     Whether select menu is disabled.
@@ -69,4 +70,5 @@ public record SelectMenuMessageComponent(
     [property: JsonPropertyName("max_values")]
     Optional<int> MaxValues,
     [property: JsonPropertyName("disabled")]
-    Optional<bool> IsDisabled) : MessageComponentWithID(Type, CustomID);
+    Optional<bool> IsDisabled) : MessageComponentWithID(
+        Type, CustomID);

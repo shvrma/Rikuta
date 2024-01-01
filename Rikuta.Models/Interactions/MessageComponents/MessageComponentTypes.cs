@@ -1,5 +1,8 @@
-﻿namespace Rikuta.Models.Interactions.MessageComponents;
+﻿using JetBrains.Annotations;
 
+namespace Rikuta.Models.Interactions.MessageComponents;
+
+[PublicAPI]
 public enum MessageComponentTypes
 {
     /// <summary>

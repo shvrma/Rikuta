@@ -11,11 +11,10 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 /// <param name="ID">
 ///     ID of the role, user, or channel this permission applies
 ///     for.
-///     Use the guild ID for <see cref="ID" /> value to scope
+///     Use the guild ID for <see cref="ID" /> to scope
 ///     permission to @everyone.
 ///     To grant permission to all channels in the guild, use
-///     the expression <c>guild ID minus 1</c> for <see cref="ID" />
-///     value.
+///     the expression <c>guild ID minus 1</c> for <see cref="ID" />.
 /// </param>
 /// <param name="Permission">
 ///     Whether to allow or disallow command for the specified

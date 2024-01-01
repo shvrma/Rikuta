@@ -5,8 +5,7 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 
 /// <summary>
 ///     Options that appear in the dropdown list for
-///     <see cref="MessageComponentTypes.StringSelect" />
-///     menus.
+///     <see cref="MessageComponentTypes.StringSelect" /> menus.
 /// </summary>
 /// <param name="Label">
 ///     User-facing name of the option; max. 100 characters.
@@ -27,15 +26,11 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 public record SelectOption(
     [property: JsonPropertyName("label")]
     string Label,
-
     [property: JsonPropertyName("value")]
     string Value,
-
     [property: JsonPropertyName("description")]
     Optional<string> Description,
-
     [property: JsonPropertyName("emoji")]
     Optional<PartialEmoji> Emoji,
-
     [property: JsonPropertyName("default")]
     Optional<bool> IsDefault);

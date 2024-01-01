@@ -26,8 +26,7 @@ namespace Rikuta.Models.Resources;
 ///     <see
 ///         href="https://discord.com/developers/docs/resources/emoji#emoji-object-premium-emoji">
 ///         there
-///     </see>
-///     .
+///     </see>.
 /// </param>
 /// <param name="User">
 ///     User, created this emoji.

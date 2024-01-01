@@ -10,5 +10,5 @@ namespace Rikuta.REST;
 [PublicAPI]
 public interface IDiscordGuildsApi
 {
-
+    
 }

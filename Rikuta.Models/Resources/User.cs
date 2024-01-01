@@ -1,4 +1,7 @@
-﻿namespace Rikuta.Models.Resources;
+﻿using JetBrains.Annotations;
 
-// TODO: User model.
+namespace Rikuta.Models.Resources;
+
+// TODO.
+[PublicAPI]
 public record User;

@@ -1,5 +1,8 @@
-﻿namespace Rikuta.Models;
+﻿using JetBrains.Annotations;
 
+namespace Rikuta.Models.Resources;
+
+[PublicAPI]
 public enum ChannelTypes : byte
 {
     GuildText         = 0,

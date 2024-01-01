@@ -11,7 +11,5 @@ namespace Rikuta.Models;
 public readonly record struct Snowflake(ulong Value)
 {
     public override string ToString()
-    {
-        return Value.ToString();
-    }
+        => Value.ToString();
 }

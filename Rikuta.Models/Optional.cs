@@ -20,17 +20,15 @@ namespace Rikuta.Models;
 ///     Explicit annotation of value availability.
 /// </param>
 [PublicAPI]
-public readonly record struct Optional<T>(T Value, bool IsValueSet)
+public readonly record struct Optional<T>(
+    T Value,
+    bool IsValueSet = true)
 {
     public static Optional<T> Empty => default;
 
     public static implicit operator T(Optional<T> optional)
-    {
-        return optional.Value;
-    }
+        => optional.Value;
 
     public static implicit operator Optional<T>(T value)
-    {
-        return new Optional<T>(value, true);
-    }
+        => new(value);
 }

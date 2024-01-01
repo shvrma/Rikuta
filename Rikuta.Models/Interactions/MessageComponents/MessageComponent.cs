@@ -9,8 +9,7 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     <see
 ///         href="https://discord.com/developers/docs/interactions/message-components">
 ///         there
-///     </see>
-///     .
+///     </see>.
 /// </summary>
 /// <param name="Type">
 ///     A <see cref="MessageComponentTypes" /> type of the component.

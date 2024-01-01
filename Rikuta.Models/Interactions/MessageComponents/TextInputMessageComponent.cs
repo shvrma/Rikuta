@@ -48,4 +48,5 @@ public record TextInputMessageComponent(
     [property: JsonPropertyName("value")]
     Optional<string> Value,
     [property: JsonPropertyName("placeholder")]
-    Optional<string> Placeholder) : MessageComponentWithID(MessageComponentTypes.TextInput, CustomID);
+    Optional<string> Placeholder) : MessageComponentWithID(
+        MessageComponentTypes.TextInput, CustomID);

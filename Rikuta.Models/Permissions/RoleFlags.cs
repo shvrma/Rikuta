@@ -1,5 +1,8 @@
-﻿namespace Rikuta.Models.Permissions;
+﻿using JetBrains.Annotations;
 
+namespace Rikuta.Models.Permissions;
+
+[PublicAPI]
 public enum RoleFlags
 {
     /// <summary>
@@ -7,8 +10,7 @@ public enum RoleFlags
     ///     <see
     ///         href="https://support.discord.com/hc/en-us/articles/11074987197975-Community-Onboarding-FAQ">
     ///         onboarding
-    ///     </see>
-    ///     prompt.
+    ///     </see> prompt.
     /// </summary>
     IsInPrompt = 1 << 0
 }

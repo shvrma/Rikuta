@@ -23,14 +23,18 @@ public record struct PermissionsString
         if (!long.TryParse(value, out _value)) _value = 0;
     }
 
-    public static implicit operator long(PermissionsString permissions)
+    public static implicit operator long(
+        PermissionsString permissions)
     {
         return permissions._value;
     }
 
-    public static implicit operator string?(PermissionsString permissions)
+    public static implicit operator string?(
+        PermissionsString permissions)
     {
-        return permissions._value == 0 ? default : permissions._value.ToString();
+        return permissions._value == 0
+            ? default
+            : permissions._value.ToString();
     }
 
     public void AddPermission(PermissionsFlags permission)

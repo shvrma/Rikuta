@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using Rikuta.Models.Serialization;
 
 namespace Rikuta.Models.Interactions.MessageComponents;
@@ -13,10 +12,8 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     Buttons must be sent inside a
 ///     <see cref="ActionRowMessageComponent" />.
 ///     A <see cref="ActionRowMessageComponent" /> can contain up to 5
-///     buttons.
-///     A <see cref="ActionRowMessageComponent" /> containing buttons
-///     cannot
-///     also contain any select menu components.
+///     buttons. A <see cref="ActionRowMessageComponent" /> containing
+///     buttons cannot also contain any select menu components.
 /// </remarks>
 /// <param name="CustomID">
 ///     Developer-defined ID for the button. Max. length is 100
@@ -26,7 +23,8 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     A button style.
 /// </param>
 /// <param name="Label">
-///     Text that appears on the button. Max. 80 characters.
+///     Text that appears on the button.
+///     <para>Max. 80 characters long.</para>
 /// </param>
 /// <param name="Emoji">
 ///     Emoji that is placed on the button.
@@ -35,7 +33,7 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     URL for <see cref="ButtonStyles.Link" /> buttons.
 /// </param>
 /// <param name="Disabled">
-///     Whether the button is disabled.
+///     Whether the button is disabled; default to <c>false</c>.
 /// </param>
 [PublicAPI]
 public record ButtonMessageComponent(
@@ -43,10 +41,10 @@ public record ButtonMessageComponent(
     [property: JsonPropertyName("style")]
     ButtonStyles Style,
     [property: JsonPropertyName("label")]
-    [property: StringLength(80)]
     Optional<string> Label,
     [property: JsonPropertyName("emoji")]
     Optional<PartialEmoji> Emoji,
     [property: JsonPropertyName("url")]
     Optional<Uri> Url,
-    Optional<bool> Disabled) : MessageComponentWithID(MessageComponentTypes.Button, CustomID);
+    Optional<bool> Disabled) : MessageComponentWithID(
+        MessageComponentTypes.Button, CustomID);

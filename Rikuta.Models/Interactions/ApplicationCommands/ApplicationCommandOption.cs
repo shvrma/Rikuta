@@ -1,19 +1,24 @@
 ﻿using JetBrains.Annotations;
 using Rikuta.Helpers;
+using Rikuta.Models.Resources;
 using Rikuta.Models.Serialization;
 
 namespace Rikuta.Models.Interactions.ApplicationCommands;
 
 /// <summary>
 ///     Represents a single option for
-///     <see cref="ApplicationCommand" />; is only reliable for
-///     <see cref="ApplicationCommandTypes.ChatInput" />.
+///     <see cref="ApplicationCommand" />.
+///     <para>
+///         Is only reliable for
+///         <see cref="ApplicationCommandTypes.ChatInput" />.
+///     </para>
 /// </summary>
 /// <param name="OptionType">
 ///     Type of option.
 /// </param>
 /// <param name="Name">
-///     1-32-character long option name.
+///     Option name.
+///     <para>1-32-character long.</para>
 /// </param>
 /// <param name="LocalizedNames">
 ///     Localization dictionary for the <see cref="Name" />.
@@ -22,7 +27,8 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 ///     </para>
 /// </param>
 /// <param name="Description">
-///     1-100-character long option description.
+///     Option description.
+///     <para>1-100-character long.</para>
 /// </param>
 /// <param name="LocalizedDescription">
 ///     Localization dictionary for the <see cref="Description" />
@@ -43,8 +49,10 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 ///     types for the user to pick from, max. 25.
 /// </param>
 /// <param name="Options">
-///     Options for command. If the option type is a subcommand
-///     or subcommand group, these nested options will be the
+///     Options for subcommand. If the <see cref="OptionType" /> is a
+///     <see cref="ApplicationCommandOptionTypes.Subcommand" />
+///     or <see cref="ApplicationCommandOptionTypes.SubcommandGroup" />,
+///     these nested options will be the
 ///     parameters.
 /// </param>
 /// <param name="ChannelTypes">
@@ -117,12 +125,12 @@ public sealed record ApplicationCommandOption(
     ///     <see
     ///         href="https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-naming">
     ///         Discord's requirements
-    ///     </see>
-    ///     .
+    ///     </see>.
     /// </summary>
-    /// <returns>Whether the <see cref="Name" /> matches the regex or not.</returns>
+    /// <returns>
+    ///     Whether the <see cref="Name" /> matches the regex or not.
+    /// </returns>
     public bool ValidateOptionName()
-    {
-        return Validation.ChatInputCommandNameAndOptionName().IsMatch(Name);
-    }
+        => Validation.ChatInputCommandNameAndOptionName()
+            .IsMatch(Name);
 }

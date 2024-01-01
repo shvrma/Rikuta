@@ -10,16 +10,15 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     <see
 ///         href="https://discord.com/developers/docs/interactions/message-components#button-object-button-styles">
 ///         there
-///     </see>
-///     .
+///     </see>.
 /// </remarks>
 [PublicAPI]
 public enum ButtonStyles
 {
-    Primary   = 1,
+    Primary = 1,
     Secondary = 2,
-    Success   = 3,
-    Danger    = 4,
+    Success = 3,
+    Danger = 4,
 
     /// <summary>
     ///     A type with a specific meaning; directs to a particular

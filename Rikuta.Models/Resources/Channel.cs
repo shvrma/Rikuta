@@ -1,4 +1,7 @@
-﻿namespace Rikuta.Models.Resources;
+﻿using JetBrains.Annotations;
 
-// TODO: Channel model.
+namespace Rikuta.Models.Resources;
+
+// TODO.
+[PublicAPI]
 public record Channel;
