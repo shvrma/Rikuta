@@ -16,5 +16,5 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 /// </param>
 [PublicAPI]
 public abstract record MessageComponent(
-    [property: JsonPropertyName("type")]
+    [property: JsonPropertyNameOverride("type")]
     MessageComponentTypes Type);

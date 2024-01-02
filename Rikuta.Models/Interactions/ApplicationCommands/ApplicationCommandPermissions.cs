@@ -22,9 +22,9 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 /// </param>
 [PublicAPI]
 public record ApplicationCommandPermissions(
-    [property: JsonPropertyName("id")]
+    [property: JsonPropertyNameOverride("id")]
     Snowflake ID,
-    [property: JsonPropertyName("type")]
+    [property: JsonPropertyNameOverride("type")]
     ApplicationCommandPermissionTypes PermissionType,
-    [property: JsonPropertyName("permission")]
+    [property: JsonPropertyNameOverride("permission")]
     bool Permission);

@@ -9,6 +9,7 @@ namespace Rikuta.Models;
 ///     All permissions names are mostly self-descriptive.
 /// </remarks>
 [PublicAPI]
+[Flags]
 public enum PermissionsFlags : long
 {
     CreateInstantInvite              = 1L << 0,

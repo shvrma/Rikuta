@@ -3,6 +3,7 @@
 namespace Rikuta.Models.Permissions;
 
 [PublicAPI]
+[Flags]
 public enum RoleFlags
 {
     /// <summary>

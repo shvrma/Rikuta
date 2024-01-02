@@ -24,5 +24,5 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 [PublicAPI]
 public abstract record MessageComponentWithID(
     MessageComponentTypes Type,
-    [property: JsonPropertyName("custom_id")]
+    [property: JsonPropertyNameOverride("custom_id")]
     string CustomID) : MessageComponent(Type);

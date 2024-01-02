@@ -24,13 +24,13 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 /// </param>
 [PublicAPI]
 public record SelectOption(
-    [property: JsonPropertyName("label")]
+    [property: JsonPropertyNameOverride("label")]
     string Label,
-    [property: JsonPropertyName("value")]
+    [property: JsonPropertyNameOverride("value")]
     string Value,
-    [property: JsonPropertyName("description")]
+    [property: JsonPropertyNameOverride("description")]
     Optional<string> Description,
-    [property: JsonPropertyName("emoji")]
+    [property: JsonPropertyNameOverride("emoji")]
     Optional<PartialEmoji> Emoji,
-    [property: JsonPropertyName("default")]
+    [property: JsonPropertyNameOverride("default")]
     Optional<bool> IsDefault);

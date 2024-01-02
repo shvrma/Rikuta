@@ -91,35 +91,35 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 /// </remarks>
 [PublicAPI]
 public sealed record ApplicationCommand(
-    [property: JsonPropertyName("id")]
+    [property: JsonPropertyNameOverride("id")]
     Snowflake ID,
-    [property: JsonPropertyName("type")]
+    [property: JsonPropertyNameOverride("type")]
     Optional<ApplicationCommandTypes> CommandType,
-    [property: JsonPropertyName("application_id")]
+    [property: JsonPropertyNameOverride("application_id")]
     Snowflake ApplicationID,
-    [property: JsonPropertyName("guild_id")]
+    [property: JsonPropertyNameOverride("guild_id")]
     Optional<Snowflake> GuildID,
-    [property: JsonPropertyName("name")]
+    [property: JsonPropertyNameOverride("name")]
     string CommandName,
-    [property: JsonPropertyName("name_localizations")]
+    [property: JsonPropertyNameOverride("name_localizations")]
     Optional<IDictionary<string, string>?> LocalizedCommandNames,
-    [property: JsonPropertyName("description")]
+    [property: JsonPropertyNameOverride("description")]
     string Description,
-    [property: JsonPropertyName("description_localizations")]
+    [property: JsonPropertyNameOverride("description_localizations")]
     Optional<IDictionary<string, string>?> LocalizedDescriptions,
-    [property: JsonPropertyName("options")]
+    [property: JsonPropertyNameOverride("options")]
     Optional<ApplicationCommandOption[]> Options,
-    [property: JsonPropertyName("default_member_permissions")]
+    [property: JsonPropertyNameOverride("default_member_permissions")]
     PermissionsString? DefaultMemberPermissions,
-    [property: JsonPropertyName("dm_permission")]
+    [property: JsonPropertyNameOverride("dm_permission")]
     Optional<bool> IsDMAllowed,
-    [property: JsonPropertyName("nsfw")]
+    [property: JsonPropertyNameOverride("nsfw")]
     Optional<bool> IsNsfw,
-    [property: JsonPropertyName("version")]
+    [property: JsonPropertyNameOverride("version")]
     Snowflake Version,
-    [property: JsonPropertyName("name_localized")]
+    [property: JsonPropertyNameOverride("name_localized")]
     Optional<string> LocalizedCommandName,
-    [property: JsonPropertyName("description_localized")]
+    [property: JsonPropertyNameOverride("description_localized")]
     Optional<string> LocalizedDescription)
 {
     /// <summary>

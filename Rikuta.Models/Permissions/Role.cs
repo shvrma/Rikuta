@@ -55,27 +55,27 @@ namespace Rikuta.Models.Permissions;
 /// </param>
 [PublicAPI]
 public record Role(
-    [property: JsonPropertyName("id")]
+    [property: JsonPropertyNameOverride("id")]
     Snowflake ID,
-    [property: JsonPropertyName("name")]
+    [property: JsonPropertyNameOverride("name")]
     string Name,
-    [property: JsonPropertyName("color")]
+    [property: JsonPropertyNameOverride("color")]
     int Color,
-    [property: JsonPropertyName("hoist")]
+    [property: JsonPropertyNameOverride("hoist")]
     bool Hoist,
-    [property: JsonPropertyName("icon")]
+    [property: JsonPropertyNameOverride("icon")]
     Optional<string?> Icon,
-    [property: JsonPropertyName("unicode_emoji")]
+    [property: JsonPropertyNameOverride("unicode_emoji")]
     Optional<char?> UnicodeEmoji,
-    [property: JsonPropertyName("position")]
+    [property: JsonPropertyNameOverride("position")]
     int Position,
-    [property: JsonPropertyName("permissions")]
+    [property: JsonPropertyNameOverride("permissions")]
     PermissionsString Permissions,
-    [property: JsonPropertyName("managed")]
+    [property: JsonPropertyNameOverride("managed")]
     bool Managed,
-    [property: JsonPropertyName("mentionable")]
+    [property: JsonPropertyNameOverride("mentionable")]
     bool Mentionable,
-    [property: JsonPropertyName("tags")]
+    [property: JsonPropertyNameOverride("tags")]
     Optional<RoleTags> Tags,
-    [property: JsonPropertyName("flags")]
-    int Flags);
+    [property: JsonPropertyNameOverride("flags")]
+    RoleFlags Flags);

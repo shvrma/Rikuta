@@ -10,4 +10,6 @@ namespace Rikuta.Models.Serialization;
 /// </param>
 [PublicAPI]
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-public class JsonPropertyNameAttribute(string name) : Attribute;
+public class JsonPropertyNameOverride(
+    [IgnoreSpellingAndGrammarErrors]
+    string name) : Attribute;

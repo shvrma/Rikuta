@@ -39,19 +39,19 @@ namespace Rikuta.Models.Rest.RequestModel.ApplicationCommands;
 /// </param>
 [PublicAPI]
 public record CreateGuildApplicationCommandRequestModel(
-    [property: JsonPropertyName("name")]
+    [property: JsonPropertyNameOverride("name")]
     string Name,
-    [property: JsonPropertyName("name_localizations")]
+    [property: JsonPropertyNameOverride("name_localizations")]
     Optional<IDictionary<string, string>?> LocalizedName,
-    [property: JsonPropertyName("description")]
+    [property: JsonPropertyNameOverride("description")]
     Optional<string> Description,
-    [property: JsonPropertyName("description_localizations")]
+    [property: JsonPropertyNameOverride("description_localizations")]
     Optional<IDictionary<string, string>?> LocalizedDescription,
-    [property: JsonPropertyName("options")]
+    [property: JsonPropertyNameOverride("options")]
     Optional<ApplicationCommandOption[]> Options,
-    [property: JsonPropertyName("default_member_permissions")]
+    [property: JsonPropertyNameOverride("default_member_permissions")]
     Optional<PermissionsString> DefaultRequiredMemberPermissions,
-    [property: JsonPropertyName("type")]
+    [property: JsonPropertyNameOverride("type")]
     Optional<ApplicationCommandTypes> Type,
-    [property: JsonPropertyName("nsfw")]
+    [property: JsonPropertyNameOverride("nsfw")]
     Optional<bool> IsNsfwCommand);

@@ -21,9 +21,9 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 /// </param>
 [PublicAPI]
 public sealed record ApplicationCommandOptionChoice(
-    [property: JsonPropertyName("name")]
+    [property: JsonPropertyNameOverride("name")]
     string Name,
-    [property: JsonPropertyName("name_localizations")]
+    [property: JsonPropertyNameOverride("name_localizations")]
     Optional<IDictionary<string, string>> LocalizedName,
-    [property: JsonPropertyName("value")]
+    [property: JsonPropertyNameOverride("value")]
     object Value);

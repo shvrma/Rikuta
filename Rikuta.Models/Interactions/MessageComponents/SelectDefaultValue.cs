@@ -14,9 +14,9 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 /// </param>
 [PublicAPI]
 public record SelectDefaultValue(
-    [property: JsonPropertyName("id")]
+    [property: JsonPropertyNameOverride("id")]
     Snowflake ID,
-    [property: JsonPropertyName("type")]
+    [property: JsonPropertyNameOverride("type")]
     [property: ValueProvider(
             "Rikuta.Models.Interactions.MessageComponents.SelectDefaultValueTypes")]
     string Type);

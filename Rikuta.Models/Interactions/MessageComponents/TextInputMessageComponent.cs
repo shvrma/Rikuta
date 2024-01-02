@@ -35,18 +35,18 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 [PublicAPI]
 public record TextInputMessageComponent(
     string CustomID,
-    [property: JsonPropertyName("style")]
+    [property: JsonPropertyNameOverride("style")]
     TextInputStyles Style,
-    [property: JsonPropertyName("label")]
+    [property: JsonPropertyNameOverride("label")]
     string Label,
-    [property: JsonPropertyName("min_length")]
+    [property: JsonPropertyNameOverride("min_length")]
     Optional<int> MinLength,
-    [property: JsonPropertyName("max_length")]
+    [property: JsonPropertyNameOverride("max_length")]
     Optional<int> MaxLength,
-    [property: JsonPropertyName("required")]
+    [property: JsonPropertyNameOverride("required")]
     Optional<bool> IsRequired,
-    [property: JsonPropertyName("value")]
+    [property: JsonPropertyNameOverride("value")]
     Optional<string> Value,
-    [property: JsonPropertyName("placeholder")]
+    [property: JsonPropertyNameOverride("placeholder")]
     Optional<string> Placeholder) : MessageComponentWithID(
         MessageComponentTypes.TextInput, CustomID);

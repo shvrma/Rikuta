@@ -38,13 +38,13 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 [PublicAPI]
 public record ButtonMessageComponent(
     string CustomID,
-    [property: JsonPropertyName("style")]
+    [property: JsonPropertyNameOverride("style")]
     ButtonStyles Style,
-    [property: JsonPropertyName("label")]
+    [property: JsonPropertyNameOverride("label")]
     Optional<string> Label,
-    [property: JsonPropertyName("emoji")]
+    [property: JsonPropertyNameOverride("emoji")]
     Optional<PartialEmoji> Emoji,
-    [property: JsonPropertyName("url")]
+    [property: JsonPropertyNameOverride("url")]
     Optional<Uri> Url,
     Optional<bool> Disabled) : MessageComponentWithID(
         MessageComponentTypes.Button, CustomID);

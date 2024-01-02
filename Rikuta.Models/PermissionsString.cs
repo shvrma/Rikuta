@@ -8,7 +8,7 @@ namespace Rikuta.Models;
 [PublicAPI]
 public record struct PermissionsString
 {
-    private long _value = 0;
+    private PermissionsFlags _value = 0;
 
     /// <summary>
     ///     Initialize a new instance of type
@@ -20,10 +20,13 @@ public record struct PermissionsString
     /// </param>
     public PermissionsString(string? value)
     {
-        if (!long.TryParse(value, out _value)) _value = 0;
+        if (long.TryParse(value, out long convertedValue))
+        {
+            _value = (PermissionsFlags)convertedValue;
+        }
     }
 
-    public static implicit operator long(
+    public static implicit operator PermissionsFlags(
         PermissionsString permissions)
     {
         return permissions._value;
@@ -39,11 +42,11 @@ public record struct PermissionsString
 
     public void AddPermission(PermissionsFlags permission)
     {
-        _value |= (long)permission;
+        _value |= permission;
     }
 
     public void RemovePermission(PermissionsFlags permission)
     {
-        _value &= ~(long)permission;
+        _value &= ~permission;
     }
 }

@@ -21,13 +21,13 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 /// </param>
 [PublicAPI]
 public record GuildApplicationCommandPermissions(
-    [property: JsonPropertyName("id")]
+    [property: JsonPropertyNameOverride("id")]
     Snowflake ID,
-    [property: JsonPropertyName("application_id")]
+    [property: JsonPropertyNameOverride("application_id")]
     Snowflake ApplicationID,
-    [property: JsonPropertyName("guild_id")]
+    [property: JsonPropertyNameOverride("guild_id")]
     Snowflake GuildID,
-    [property: JsonPropertyName("permissions")]
+    [property: JsonPropertyNameOverride("permissions")]
     ApplicationCommandPermissions[] Permissions)
 {
     /// <summary>

@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using Rikuta.Models.Resources;
+using Rikuta.Models.Resources.Channel;
 using Rikuta.Models.Serialization;
 
 namespace Rikuta.Models.Interactions.MessageComponents;
@@ -57,18 +58,18 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 public record SelectMenuMessageComponent(
     MessageComponentTypes Type,
     string CustomID,
-    [property: JsonPropertyName("options")]
+    [property: JsonPropertyNameOverride("options")]
     Optional<SelectOption[]> Options,
-    [property: JsonPropertyName("channel_types")]
+    [property: JsonPropertyNameOverride("channel_types")]
     Optional<ChannelTypes[]> ChannelTypes,
-    [property: JsonPropertyName("placeholder")]
+    [property: JsonPropertyNameOverride("placeholder")]
     Optional<string> Placeholder,
-    [property: JsonPropertyName("default_values")]
+    [property: JsonPropertyNameOverride("default_values")]
     Optional<SelectDefaultValue[]> DefaultValues,
-    [property: JsonPropertyName("min_values")]
+    [property: JsonPropertyNameOverride("min_values")]
     Optional<int> MinValues,
-    [property: JsonPropertyName("max_values")]
+    [property: JsonPropertyNameOverride("max_values")]
     Optional<int> MaxValues,
-    [property: JsonPropertyName("disabled")]
+    [property: JsonPropertyNameOverride("disabled")]
     Optional<bool> IsDisabled) : MessageComponentWithID(
         Type, CustomID);

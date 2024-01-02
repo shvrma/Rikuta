@@ -1,6 +1,7 @@
 ﻿using JetBrains.Annotations;
 using Rikuta.Helpers;
 using Rikuta.Models.Resources;
+using Rikuta.Models.Resources.Channel;
 using Rikuta.Models.Serialization;
 
 namespace Rikuta.Models.Interactions.ApplicationCommands;
@@ -91,33 +92,33 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 /// </param>
 [PublicAPI]
 public sealed record ApplicationCommandOption(
-    [property: JsonPropertyName("type")]
+    [property: JsonPropertyNameOverride("type")]
     ApplicationCommandOptionTypes OptionType,
-    [property: JsonPropertyName("name")]
+    [property: JsonPropertyNameOverride("name")]
     string Name,
-    [property: JsonPropertyName("name")]
+    [property: JsonPropertyNameOverride("name")]
     Optional<IDictionary<string, string>?> LocalizedNames,
-    [property: JsonPropertyName("description")]
+    [property: JsonPropertyNameOverride("description")]
     string Description,
-    [property: JsonPropertyName("description_localizations")]
+    [property: JsonPropertyNameOverride("description_localizations")]
     Optional<IDictionary<string, string>?> LocalizedDescription,
-    [property: JsonPropertyName("required")]
+    [property: JsonPropertyNameOverride("required")]
     Optional<bool> IsRequired,
-    [property: JsonPropertyName("choices")]
+    [property: JsonPropertyNameOverride("choices")]
     Optional<IReadOnlyList<ApplicationCommandOptionChoice>> Choices,
-    [property: JsonPropertyName("options")]
+    [property: JsonPropertyNameOverride("options")]
     Optional<ApplicationCommandOption[]> Options,
-    [property: JsonPropertyName("channel_types")]
+    [property: JsonPropertyNameOverride("channel_types")]
     Optional<ChannelTypes[]> ChannelTypes,
-    [property: JsonPropertyName("min_value")]
+    [property: JsonPropertyNameOverride("min_value")]
     Optional<object> MinValue,
-    [property: JsonPropertyName("max_value")]
+    [property: JsonPropertyNameOverride("max_value")]
     Optional<object> MaxValue,
-    [property: JsonPropertyName("min_length")]
+    [property: JsonPropertyNameOverride("min_length")]
     Optional<short> MinLength,
-    [property: JsonPropertyName("max_length")]
+    [property: JsonPropertyNameOverride("max_length")]
     Optional<short> MaxLength,
-    [property: JsonPropertyName("autocomplete")]
+    [property: JsonPropertyNameOverride("autocomplete")]
     Optional<bool> IsAutocomplete)
 {
     /// <summary>

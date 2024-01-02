@@ -46,19 +46,19 @@ namespace Rikuta.Models.Resources;
 /// </param>
 [PublicAPI]
 public record Emoji(
-    [property: JsonPropertyName("id")]
+    [property: JsonPropertyNameOverride("id")]
     Snowflake? ID,
-    [property: JsonPropertyName("name")]
+    [property: JsonPropertyNameOverride("name")]
     string? Name,
-    [property: JsonPropertyName("roles")]
+    [property: JsonPropertyNameOverride("roles")]
     Optional<Snowflake[]> AllowedRoles,
-    [property: JsonPropertyName("user")]
+    [property: JsonPropertyNameOverride("user")]
     Optional<User> User,
-    [property: JsonPropertyName("require_colons")]
+    [property: JsonPropertyNameOverride("require_colons")]
     Optional<bool> RequireColons,
-    [property: JsonPropertyName("managed")]
+    [property: JsonPropertyNameOverride("managed")]
     Optional<bool> IsManaged,
-    [property: JsonPropertyName("animated")]
+    [property: JsonPropertyNameOverride("animated")]
     Optional<bool> IsAnimated,
-    [property: JsonPropertyName("available")]
+    [property: JsonPropertyNameOverride("available")]
     Optional<bool> IsUsable);

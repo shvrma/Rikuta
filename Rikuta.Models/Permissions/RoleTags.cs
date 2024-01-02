@@ -39,15 +39,15 @@ namespace Rikuta.Models.Permissions;
 /// </param>
 [PublicAPI]
 public record RoleTags(
-    [property: JsonPropertyName("bot_id")]
+    [property: JsonPropertyNameOverride("bot_id")]
     Optional<Snowflake> BotID,
-    [property: JsonPropertyName("integration_id")]
+    [property: JsonPropertyNameOverride("integration_id")]
     Optional<Snowflake> IntegrationID,
-    [property: JsonPropertyName("premium_subscriber")]
+    [property: JsonPropertyNameOverride("premium_subscriber")]
     Optional<object> IsBoostersRole,
-    [property: JsonPropertyName("subscription_listing_id")]
+    [property: JsonPropertyNameOverride("subscription_listing_id")]
     Optional<Snowflake> SubscriptionListingID,
-    [property: JsonPropertyName("available_for_purchase")]
+    [property: JsonPropertyNameOverride("available_for_purchase")]
     Optional<object> AvailableForPurchase,
-    [property: JsonPropertyName("guild_connections")]
+    [property: JsonPropertyNameOverride("guild_connections")]
     Optional<object> IsGuildLinked);

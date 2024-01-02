@@ -8,7 +8,7 @@ namespace Rikuta.Models.Serialization;
 /// </summary>
 /// <remarks>
 ///     Your interface implementation should rely on the
-///     <see cref="JsonPropertyNameAttribute" />
+///     <see cref="JsonPropertyNameOverride" />
 ///     and <see cref="JsonSerializableAttribute" /> attributes for
 ///     serialization/deserialization.
 /// </remarks>
@@ -32,5 +32,6 @@ public interface IJsonSerializer
     /// </summary>
     /// <typeparam name="T">Type to deserialize to.</typeparam>
     /// <param name="input">Object to deserialize to.</param>
-    T Deserialize<T>(ReadOnlyMemory<char> input);
+    T Deserialize<T>([LanguageInjection(InjectedLanguage.JSON)]
+        ReadOnlyMemory<char> input);
 }

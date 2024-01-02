@@ -3,17 +3,11 @@ using Rikuta.Models.Resources;
 
 namespace Rikuta.Models.Interactions.MessageComponents;
 
-/// <summary>
-///     A partial data about emoji.
-/// </summary>
-/// <param name="ID">Emoji ID.</param>
-/// <param name="Name">
-///     Emoji name (can be null only in reaction emoji objects,
-///     when custom emoji data is not available).
-/// </param>
-/// <param name="IsAnimated">
-///     Whether this emoji is animated.
-/// </param>
+/// <inheritdoc cref="Emoji" />
+/// <remarks>
+///     Only <paramref name="Name" />, <paramref name="ID" /> and
+///     <paramref name="IsAnimated" /> are available.
+/// </remarks>
 [PublicAPI]
 public record PartialEmoji(
     Snowflake? ID,
@@ -26,33 +20,25 @@ public record PartialEmoji(
         Optional<bool>.Empty,
         Optional<bool>.Empty,
         IsAnimated,
-        Optional<bool>.Empty)
+        Optional<bool>.Empty), IPartialEntity
 {
-    private const string PartialDataUnavailableExceptionMessage =
-            "This data is not available on the partial entity.";
-
     /// <inheritdoc cref="Emoji.AllowedRoles" />
-    public new Optional<Snowflake[]> AllowedRoles =>
-            throw new NotSupportedException(
-                    PartialDataUnavailableExceptionMessage);
+    public static new Optional<Snowflake[]> AllowedRoles =>
+            throw IPartialEntity.PartialDataUnavailableException;
 
     /// <inheritdoc cref="Emoji.User" />
-    public new Optional<User> User =>
-            throw new NotSupportedException(
-                    PartialDataUnavailableExceptionMessage);
+    public static new Optional<User> User =>
+            throw IPartialEntity.PartialDataUnavailableException;
 
     /// <inheritdoc cref="Emoji.RequireColons" />
-    public new Optional<bool> RequireColons =>
-            throw new NotSupportedException(
-                    PartialDataUnavailableExceptionMessage);
+    public static new Optional<bool> RequireColons =>
+            throw IPartialEntity.PartialDataUnavailableException;
 
     /// <inheritdoc cref="Emoji.IsManaged" />
-    public new Optional<bool> IsManaged =>
-            throw new NotSupportedException(
-                    PartialDataUnavailableExceptionMessage);
+    public static new Optional<bool> IsManaged =>
+            throw IPartialEntity.PartialDataUnavailableException;
 
     /// <inheritdoc cref="Emoji.IsUsable" />
-    public new Optional<bool> IsUsable =>
-            throw new NotSupportedException(
-                    PartialDataUnavailableExceptionMessage);
+    public static new Optional<bool> IsUsable =>
+            throw IPartialEntity.PartialDataUnavailableException;
 }
