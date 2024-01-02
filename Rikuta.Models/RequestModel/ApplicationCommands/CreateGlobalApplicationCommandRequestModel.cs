@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using JetBrains.Annotations;
 using Rikuta.Models.Interactions;
+using Rikuta.Models.Interactions.ApplicationCommands;
 using Rikuta.Models.Serialization;
 
 namespace Rikuta.Models.RequestModel.ApplicationCommands;
@@ -16,33 +18,32 @@ namespace Rikuta.Models.RequestModel.ApplicationCommands;
 /// <param name="IsDMAllowed">Whether this command is allowed in DM.</param>
 /// <param name="Type">Command type.</param>
 /// <param name="IsNsfwCommand">Indicates whether the command is age-restricted.</param>
-[JsonSerializable]
+[PublicAPI]
 public record CreateGlobalApplicationCommandRequestModel(
-    [property: JsonPropertyName("name")]
+    [property: JsonPropertyNameOverride("name")]
     [property: StringLength(32, MinimumLength = 1)]
     string Name,
 
-    [property: JsonPropertyName("name_localizations")]
+    [property: JsonPropertyNameOverride("name_localizations")]
     Optional<IDictionary<string, string>?> LocalizedName,
 
-    [property: JsonPropertyName("description")]
-    [property: StringLength(100, MinimumLength = 1)]
+    [property: JsonPropertyNameOverride("description")]
     Optional<string> Description,
 
-    [property: JsonPropertyName("description_localizations")]
+    [property: JsonPropertyNameOverride("description_localizations")]
     Optional<IDictionary<string, string>?> LocalizedDescription,
 
-    [property: JsonPropertyName("options")]
+    [property: JsonPropertyNameOverride("options")]
     Optional<ApplicationCommandOption[]> Options,
 
-    [property: JsonPropertyName("default_member_permissions")]
-    Optional<PermissionsSet> DefaultRequiredMemberPermissions,
+    [property: JsonPropertyNameOverride("default_member_permissions")]
+    Optional<PermissionsString> DefaultRequiredMemberPermissions,
 
-    [property: JsonPropertyName("dm_permission")]
+    [property: JsonPropertyNameOverride("dm_permission")]
     Optional<bool?> IsDMAllowed,
 
-    [property: JsonPropertyName("type")]
+    [property: JsonPropertyNameOverride("type")]
     Optional<ApplicationCommandTypes> Type,
 
-    [property: JsonPropertyName("nsfw")]
+    [property: JsonPropertyNameOverride("nsfw")]
     Optional<bool> IsNsfwCommand);

@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Refit;
 using Rikuta.Models;
-using Rikuta.Models.Interactions;
+using Rikuta.Models.Interactions.ApplicationCommands;
 using Rikuta.Models.RequestModel.ApplicationCommands;
 
 namespace Rikuta.REST;

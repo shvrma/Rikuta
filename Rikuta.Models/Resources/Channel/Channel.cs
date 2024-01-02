@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace Rikuta.Models.Resources;
+namespace Rikuta.Models.Resources.Channel;
 
 // TODO.
 [PublicAPI]
