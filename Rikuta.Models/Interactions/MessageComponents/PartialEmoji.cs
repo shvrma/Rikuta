@@ -6,7 +6,7 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 /// <inheritdoc cref="Emoji" />
 /// <remarks>
 ///     Only <paramref name="Name" />, <paramref name="ID" /> and
-///     <paramref name="IsAnimated" /> are available.
+///     <paramref name="IsAnimated" /> properties are available.
 /// </remarks>
 [PublicAPI]
 public record PartialEmoji(

@@ -8,19 +8,20 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     <see cref="MessageComponentTypes.StringSelect" /> menus.
 /// </summary>
 /// <param name="Label">
-///     User-facing name of the option; max. 100 characters.
+///     User-facing name of the option, max. 100 characters in length.
 /// </param>
 /// <param name="Value">
-///     Dev-defined value of the option; max. 100 characters.
+///     Value for the option, max. 100 characters in length.
 /// </param>
 /// <param name="Description">
-///     Additional description of the option; max 100 characters.
+///     Additional description of the option, max. 100 characters
+///     in length.
 /// </param>
 /// <param name="Emoji">
 ///     Emoji to display with an option.
 /// </param>
 /// <param name="IsDefault">
-///     Will show this option as selected by default.
+///     Whether show this option as selected by default.
 /// </param>
 [PublicAPI]
 public record SelectOption(

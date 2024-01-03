@@ -15,9 +15,13 @@ public enum MessageComponentTypes
     ///     Select menu for picking from defined text options.
     /// </summary>
     StringSelect = 3,
-    TextInput         = 4,
-    UserSelect        = 5,
-    RoleSelect        = 6,
+    TextInput = 4,
+    UserSelect = 5,
+    RoleSelect = 6,
+    
+    /// <summary>
+    ///     Select menu for mentionable entities (users and roles).
+    /// </summary>
     MentionableSelect = 7,
-    ChannelSelect     = 8
+    ChannelSelect = 8
 }

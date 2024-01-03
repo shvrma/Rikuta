@@ -8,29 +8,32 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     modals, prompting the user to type a text.
 /// </summary>
 /// <param name="CustomID">
-///     A <see cref="Snowflake" /> ID for the select menu; max
-///     100 characters.
+///     A <see cref="Snowflake" /> ID for the select menu, max
+///     100 characters in length.
 /// </param>
-/// <param name="Style"></param>
+/// <param name="Style">
+///     Whether the input is single- or multiline.
+/// </param>
 /// <param name="Label">
-///     Label for this component; max. 45 characters.
+///     Label for this component, max. 45 characters in length.
 /// </param>
 /// <param name="MinLength">
-///     Minimum input length for a text input; min. 0, max. 4000.
+///     Minimum input length for a text input - min. 0, max. 4000.
 /// </param>
 /// <param name="MaxLength">
-///     Maximum input length for a text input; min. 1, max. 4000.
+///     Maximum input length for a text input - min. 1, max. 4000.
 /// </param>
 /// <param name="IsRequired">
 ///     Whether this component is required to be filled (defaults
-///     to <c>true</c>).
+///     to <see langword="true" />).
 /// </param>
 /// <param name="Value">
-///     Pre-filled value for this component; max. 4000 characters.
+///     Pre-filled value for this component, max. 4000 characters
+///     in length.
 /// </param>
 /// <param name="Placeholder">
-///     Custom placeholder text if the input is empty; max. 100
-///     characters.
+///     Custom placeholder text if the input is empty, max. 100
+///     characters in length.
 /// </param>
 [PublicAPI]
 public record TextInputMessageComponent(

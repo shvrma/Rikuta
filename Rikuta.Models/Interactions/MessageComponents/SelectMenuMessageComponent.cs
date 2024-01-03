@@ -1,5 +1,4 @@
 ﻿using JetBrains.Annotations;
-using Rikuta.Models.Resources;
 using Rikuta.Models.Resources.Channel;
 using Rikuta.Models.Serialization;
 
@@ -11,13 +10,13 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     messages.
 /// </summary>
 /// <param name="CustomID">
-///     A <see cref="Snowflake" /> ID for the select menu; max
-///     100 characters.
+///     A <see cref="Snowflake" /> ID for the select menu, max
+///     100 characters in length.
 /// </param>
 /// <param name="Options">
 ///     Are required for
 ///     <see cref="MessageComponentTypes.StringSelect" />
-///     menus. And unavailable for all other select menu components.
+///     menus and unavailable for all other select menu components.
 ///     Specified choices in a select menu. Max. 25.
 /// </param>
 /// <param name="ChannelTypes">
@@ -27,21 +26,28 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     channel select component.
 /// </param>
 /// <param name="Placeholder">
-///     Placeholder text if nothing is selected; max 150
-///     characters.
+///     Placeholder text if nothing is selected, max. 150
+///     characters in length.
 /// </param>
 /// <param name="DefaultValues">
-///     Parameter is only available for auto-populated select
-///     menu components, which include
-///     <see cref="MessageComponentTypes.UserSelect" />,
-///     <see cref="MessageComponentTypes.RoleSelect" />,
-///     <see cref="MessageComponentTypes.MentionableSelect" />,
-///     and <see cref="MessageComponentTypes.ChannelSelect" />
-///     components.
 ///     List of default values for auto-populated select menu
-///     components; number of default values must be in the
-///     range defined by <paramref name="MinValues" /> and
-///     <paramref name="MaxValues" />.
+///     components.
+///     <remarks>
+///         <para>
+///             Parameter is only available for auto-populated select
+///             menu components, which include
+///             <see cref="MessageComponentTypes.UserSelect" />,
+///             <see cref="MessageComponentTypes.RoleSelect" />,
+///             <see cref="MessageComponentTypes.MentionableSelect" />,
+///             and <see cref="MessageComponentTypes.ChannelSelect" />
+///             components.
+///         </para>
+///         <para>
+///             Values for defaults must be in the
+///             range defined in <paramref name="MinValues" /> and
+///             <paramref name="MaxValues" /> properties.
+///         </para>
+///     </remarks>
 /// </param>
 /// <param name="MinValues">
 ///     Minimum number of items that must be chosen (defaults to 1);
@@ -52,7 +58,8 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     max. 25.
 /// </param>
 /// <param name="IsDisabled">
-///     Whether select menu is disabled.
+///     Whether select menu is disabled (defaults to
+///     <see langword="false" />).
 /// </param>
 [PublicAPI]
 public record SelectMenuMessageComponent(

@@ -1,58 +1,39 @@
 ﻿using JetBrains.Annotations;
 using Rikuta.Helpers;
+using Rikuta.Models.Resources;
 using Rikuta.Models.Resources.Channel;
 using Rikuta.Models.Serialization;
 
 namespace Rikuta.Models.Interactions.ApplicationCommands;
 
 /// <summary>
-///     <para>
-///         Represents a single option for
-///         <see cref="ApplicationCommand" />.
-///     </para>
+///     Represents a single option for
+///     <see cref="ApplicationCommand" />.
 ///     <para>
 ///         Is only reliable for
 ///         <see cref="ApplicationCommandTypes.ChatInput" />.
 ///     </para>
 /// </summary>
-/// <remarks>
-///     <para>
-///         Required options in <see cref="Options" /> field must be
-///         listed before optional options.
-///     </para>
-///     <para>
-///         Options using autocomplete are not confined to only use
-///         choices given by the application.
-///     </para>
-///     <para>
-///         <see cref="IsAutocomplete" /> may not be set to true
-///         if <see cref="Choices" /> are present.
-///     </para>
-/// </remarks>
 /// <param name="OptionType">
 ///     Type of option.
 /// </param>
 /// <param name="Name">
-///     <para>Option name.</para>
+///     Option name.
 ///     <para>1-32-character long.</para>
 /// </param>
 /// <param name="LocalizedNames">
-///     <para>
-///         Localization dictionary for the <see cref="Name" />.
-///     </para>
+///     Localization dictionary for the <see cref="Name" />.
 ///     <para>
 ///         Values follow the same restrictions as <see cref="Name" />.
 ///     </para>
 /// </param>
 /// <param name="Description">
-///     <para>Option description.</para>
+///     Option description.
 ///     <para>1-100-character long.</para>
 /// </param>
 /// <param name="LocalizedDescription">
-///     <para>
-///         Localization dictionary for the <see cref="Description" />
-///         field.
-///     </para>
+///     Localization dictionary for the <see cref="Description" />
+///     field.
 ///     <para>
 ///         Values follow the same restrictions as
 ///         <see cref="Description" />.
@@ -60,13 +41,13 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 /// </param>
 /// <param name="IsRequired">
 ///     Whether the parameter is required or optional, default
-///     to <see langword="false" />.
+///     to <c>false</c>.
 /// </param>
 /// <param name="Choices">
 ///     Choices for <see cref="ApplicationCommandOptionTypes.String" />,
 ///     <see cref="ApplicationCommandOptionTypes.Int" />, and
 ///     <see cref="ApplicationCommandOptionTypes.Number" />
-///     option types for the user to pick from; max. 25.
+///     types for the user to pick from, max. 25.
 /// </param>
 /// <param name="Options">
 ///     Options for subcommand. If the <see cref="OptionType" /> is a
@@ -130,13 +111,13 @@ public sealed record ApplicationCommandOption(
     [property: JsonPropertyNameOverride("channel_types")]
     Optional<ChannelTypes[]> ChannelTypes,
     [property: JsonPropertyNameOverride("min_value")]
-    Optional<IJsonValue> MinValue,
+    Optional<object> MinValue,
     [property: JsonPropertyNameOverride("max_value")]
-    Optional<IJsonValue> MaxValue,
+    Optional<object> MaxValue,
     [property: JsonPropertyNameOverride("min_length")]
-    Optional<int> MinLength,
+    Optional<short> MinLength,
     [property: JsonPropertyNameOverride("max_length")]
-    Optional<int> MaxLength,
+    Optional<short> MaxLength,
     [property: JsonPropertyNameOverride("autocomplete")]
     Optional<bool> IsAutocomplete)
 {
@@ -152,5 +133,5 @@ public sealed record ApplicationCommandOption(
     /// </returns>
     public bool ValidateOptionName()
         => Validation.ChatInputCommandNameAndOptionName()
-                .IsMatch(Name);
+            .IsMatch(Name);
 }

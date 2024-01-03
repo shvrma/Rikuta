@@ -5,13 +5,10 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 /// <summary>
 ///     Determines the visual look of the button.
 /// </summary>
-/// <remarks>
-///     Look for examples
-///     <see
-///         href="https://discord.com/developers/docs/interactions/message-components#button-object-button-styles">
-///         there
-///     </see>.
-/// </remarks>
+/// <seealso
+///     href="https://discord.com/developers/docs/interactions/message-components#button-object-button-styles">
+///     Discord docs
+/// </seealso>
 [PublicAPI]
 public enum ButtonStyles
 {

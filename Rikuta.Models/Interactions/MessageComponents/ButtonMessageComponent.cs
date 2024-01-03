@@ -9,15 +9,18 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     your app when clicked.
 /// </summary>
 /// <remarks>
-///     Buttons must be sent inside a
+///     Buttons should be placed in an
 ///     <see cref="ActionRowMessageComponent" />.
 ///     A <see cref="ActionRowMessageComponent" /> can contain up to 5
-///     buttons. A <see cref="ActionRowMessageComponent" /> containing
-///     buttons cannot also contain any select menu components.
+///     buttons, but cannot have any select menu components.
 /// </remarks>
 /// <param name="CustomID">
 ///     Developer-defined ID for the button. Max. length is 100
 ///     characters.
+///     <remarks>
+///         Non-link buttons must have a custom ID specified, and
+///         cannot have a <paramref name="Url" />.
+///     </remarks>
 /// </param>
 /// <param name="Style">
 ///     A button style.
@@ -31,9 +34,20 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 /// </param>
 /// <param name="Url">
 ///     URL for <see cref="ButtonStyles.Link" /> buttons.
+///     <remarks>
+///         <para>
+///             Link buttons do not send an interaction to your app
+///             when clicked.
+///         </para>
+///         <para>
+///             Link buttons must have a url, and cannot have a
+///             <paramref name="CustomID" />.
+///         </para>
+///     </remarks>
 /// </param>
-/// <param name="Disabled">
-///     Whether the button is disabled; default to <c>false</c>.
+/// <param name="IsDisabled">
+///     Whether the button is disabled; default to
+///     <see langword="false" />.
 /// </param>
 [PublicAPI]
 public record ButtonMessageComponent(
@@ -46,5 +60,6 @@ public record ButtonMessageComponent(
     Optional<PartialEmoji> Emoji,
     [property: JsonPropertyNameOverride("url")]
     Optional<Uri> Url,
-    Optional<bool> Disabled) : MessageComponentWithID(
+    [property: JsonPropertyNameOverride("disabled")]
+    Optional<bool> IsDisabled) : MessageComponentWithID(
         MessageComponentTypes.Button, CustomID);

@@ -3,14 +3,14 @@
 namespace Rikuta.Models.Interactions.MessageComponents;
 
 /// <summary>
-///     A <see cref="ActionRowMessageComponent" /> is a non-interactive
-///     container component for other types of components.
+///     A non-interactive container component for other types of
+///     components.
 /// </summary>
 /// <param name="Components">Components for this row.</param>
 [PublicAPI]
 public record ActionRowMessageComponent(
     IEnumerable<MessageComponent> Components)
-    : MessageComponent(MessageComponentTypes.ActionRow)
+        : MessageComponent(MessageComponentTypes.ActionRow)
 {
     /// <summary>
     ///     Check whether this row is valid.
@@ -27,14 +27,17 @@ public record ActionRowMessageComponent(
         foreach (MessageComponent component in Components)
         {
             // Action rows can not be nested.
-            // ReSharper disable once ConvertIfStatementToSwitchStatement
             if (component.Type == MessageComponentTypes.ActionRow)
+            {
                 return false;
+            }
 
             // If the row contains at least one button, it is
             // considered as button row.
             if (component.Type == MessageComponentTypes.Button)
+            {
                 isButtonRow = true;
+            }
 
             if (isButtonRow)
             {

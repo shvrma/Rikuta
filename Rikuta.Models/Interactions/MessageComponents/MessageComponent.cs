@@ -5,14 +5,9 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 
 /// <summary>
 ///     Base type for all message components.
-///     Read about it
-///     <see
-///         href="https://discord.com/developers/docs/interactions/message-components">
-///         there
-///     </see>.
 /// </summary>
 /// <param name="Type">
-///     A <see cref="MessageComponentTypes" /> type of the component.
+///     A type of the component.
 /// </param>
 [PublicAPI]
 public abstract record MessageComponent(
