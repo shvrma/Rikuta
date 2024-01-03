@@ -15,15 +15,15 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 ///     <see cref="ApplicationCommandTypes.ChatInput" />.
 /// </param>
 /// <param name="ApplicationID">
-///     An application identifier this command belongs to.
+///     An application ID this command belongs to.
 /// </param>
 /// <param name="GuildID">
-///     A guild identifies this command is from; if omitted - the
-///     command is global.
+///     A guild ID this command is from; if omitted - the command is
+///     global.
 /// </param>
 /// <param name="CommandName">
-///     Name of command.
-///     <para> 1-32 characters long. </para>
+///     <para>Name of command.</para>
+///     <para> 1-32 characters long.</para>
 /// </param>
 /// <param name="LocalizedCommandNames">
 ///     Localization dictionary for <see cref="CommandName" /> field.
@@ -31,12 +31,11 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 ///     <see cref="CommandName" />.
 /// </param>
 /// <param name="Description">
-///     Description for
-///     <see cref="ApplicationCommandTypes.ChatInput" /> commands.
 ///     <para>
-///         1-100
-///         characters long.
+///         Description for
+///         <see cref="ApplicationCommandTypes.ChatInput" /> commands.
 ///     </para>
+///     <para> 1-100 characters long.</para>
 ///     <para>
 ///         Empty for <see cref="ApplicationCommandTypes.User" />
 ///         and <see cref="ApplicationCommandTypes.Message" /> commands.
@@ -48,8 +47,10 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 ///     <see cref="Description" />.
 /// </param>
 /// <param name="Options">
-///     Parameters for the command. Used only in
-///     <see cref="ApplicationCommandTypes.ChatInput" /> commands;
+///     <para>
+///         Parameters for the command. Used only in
+///         <see cref="ApplicationCommandTypes.ChatInput" /> commands;
+///     </para>
 ///     <para>max. of 25.</para>
 /// </param>
 /// <param name="DefaultMemberPermissions">
@@ -67,10 +68,10 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 /// </param>
 /// <param name="IsNsfw">
 ///     Indicates whether the command is age-restricted, defaults to
-///     <c> false </c>.
+///     <c>false</c>.
 /// </param>
 /// <param name="LocalizedCommandName">
-///     Represents localized command name according to user's
+///     Represents localized command name according to client's
 ///     locale. This property is only included in response to
 ///     some endpoints, especially GET endpoints that return a
 ///     generalized list of all commands. You must not include
@@ -78,7 +79,7 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 /// </param>
 /// <param name="LocalizedDescription">
 ///     Represents localized command description according to
-///     user's locale. This property is only included in response
+///     client's locale. This property is only included in response
 ///     to some endpoints, especially GET endpoints that return a
 ///     generalized list of all commands. You must not include
 ///     this in the request.
@@ -158,9 +159,10 @@ public sealed record ApplicationCommand(
     ///     Whether the <see cref="CommandName" /> matches the
     ///     regex or not.
     /// </returns>
+    /// <seealso cref="Validation.ChatInputCommandNameAndOptionName" />
     public bool ValidateCommandName()
         => Validation.ChatInputCommandNameAndOptionName()
-            .IsMatch(input: CommandName);
+                .IsMatch(input: CommandName);
 
     /// <summary>
     ///     Command options must be ordered such that required

@@ -7,8 +7,12 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 ///     Represent a single choice of value for
 ///     <see cref="ApplicationCommandOption" />.
 /// </summary>
+/// <remarks>
+///     If you specify choices for an option, they are the only valid
+///     values for a user to pick.
+/// </remarks>
 /// <param name="Name">
-///     Choice name.
+///     <para>Choice name.</para>
 ///     <para>1-100 character long.</para>
 /// </param>
 /// <param name="LocalizedName">
@@ -16,8 +20,9 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 ///     Values follow the same restrictions.
 /// </param>
 /// <param name="Value">
-///     Value for the choice, up to 100 characters long. It can be a
-///     string, integer, or double.
+///     Value for the choice up to 100 characters in length. It can
+///     be a string, integer, or double - depending on the option type
+///     that the choice belongs to.
 /// </param>
 [PublicAPI]
 public sealed record ApplicationCommandOptionChoice(
@@ -26,4 +31,4 @@ public sealed record ApplicationCommandOptionChoice(
     [property: JsonPropertyNameOverride("name_localizations")]
     Optional<IDictionary<string, string>> LocalizedName,
     [property: JsonPropertyNameOverride("value")]
-    object Value);
+    IJsonValue Value);

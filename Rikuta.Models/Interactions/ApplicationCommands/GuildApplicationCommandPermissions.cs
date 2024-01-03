@@ -36,7 +36,5 @@ public record GuildApplicationCommandPermissions(
     ///     overwrite.
     /// </summary>
     public bool IsDefaultPermission()
-    {
-        return ID == ApplicationID;
-    }
+        => ID == ApplicationID;
 }
