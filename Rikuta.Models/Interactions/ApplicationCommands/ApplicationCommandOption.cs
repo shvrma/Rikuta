@@ -1,6 +1,5 @@
 ﻿using JetBrains.Annotations;
 using Rikuta.Helpers;
-using Rikuta.Models.Resources;
 using Rikuta.Models.Resources.Channel;
 using Rikuta.Models.Serialization;
 
@@ -8,36 +7,26 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 
 /// <summary>
 ///     Represents a single option for
-///     <see cref="ApplicationCommand" />.
-///     <para>
-///         Is only reliable for
-///         <see cref="ApplicationCommandTypes.ChatInput" />.
-///     </para>
+///     <see cref="ApplicationCommand" />. Is only reliable for
+///     <see cref="ApplicationCommandTypes.ChatInput" />.
 /// </summary>
 /// <param name="OptionType">
 ///     Type of option.
 /// </param>
 /// <param name="Name">
-///     Option name.
-///     <para>1-32-character long.</para>
+///     Option name. 1-32-character long.
 /// </param>
 /// <param name="LocalizedNames">
 ///     Localization dictionary for the <see cref="Name" />.
-///     <para>
-///         Values follow the same restrictions as <see cref="Name" />.
-///     </para>
+///     Values follow the same restrictions as <see cref="Name" />.
 /// </param>
 /// <param name="Description">
-///     Option description.
-///     <para>1-100-character long.</para>
+///     Option description. 1-100-character long.
 /// </param>
 /// <param name="LocalizedDescription">
 ///     Localization dictionary for the <see cref="Description" />
-///     field.
-///     <para>
-///         Values follow the same restrictions as
-///         <see cref="Description" />.
-///     </para>
+///     field. Values follow the same restrictions as
+///     <see cref="Description" />.
 /// </param>
 /// <param name="IsRequired">
 ///     Whether the parameter is required or optional, default
@@ -126,12 +115,13 @@ public sealed record ApplicationCommandOption(
     ///     <see
     ///         href="https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-naming">
     ///         Discord's requirements
-    ///     </see>.
+    ///     </see>
+    ///     .
     /// </summary>
     /// <returns>
     ///     Whether the <see cref="Name" /> matches the regex or not.
     /// </returns>
     public bool ValidateOptionName()
         => Validation.ChatInputCommandNameAndOptionName()
-            .IsMatch(Name);
+                .IsMatch(Name);
 }

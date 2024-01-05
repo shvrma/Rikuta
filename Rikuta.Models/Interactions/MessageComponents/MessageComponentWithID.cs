@@ -10,18 +10,14 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     Developer-defined ID for component. Max 100 characters
 ///     in length.
 ///     <remarks>
-///         <para>
-///             Defined by the developer when sending the component,
-///             and is returned in the interaction payload sent when a
-///             user interacts with the component.
-///         </para>
-///         <para>
-///             <paramref name="CustomID" /> must be unique per each
-///             component.
-///         </para>
+///         Defined by the developer when sending the component,
+///         and is returned in the interaction payload sent when a
+///         user interacts with the component.
+///         <paramref name="CustomID" /> must be unique per each
+///         component.
 ///     </remarks>
 /// </param>
-/// <param name="Type">
+/// <param name="ComponentType">
 ///     A <see cref="MessageComponentTypes" /> type of the component.
 /// </param>
 /// <seealso
@@ -30,6 +26,6 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 /// </seealso>
 [PublicAPI]
 public abstract record MessageComponentWithID(
-    MessageComponentTypes Type,
+    MessageComponentTypes ComponentType,
     [property: JsonPropertyNameOverride("custom_id")]
-    string CustomID) : MessageComponent(Type);
+    string CustomID) : MessageComponent(ComponentType);

@@ -22,8 +22,7 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 ///     global.
 /// </param>
 /// <param name="CommandName">
-///     <para>Name of command.</para>
-///     <para> 1-32 characters long.</para>
+///     Name of command. 1-32 characters long.
 /// </param>
 /// <param name="LocalizedCommandNames">
 ///     Localization dictionary for <see cref="CommandName" /> field.
@@ -31,15 +30,11 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 ///     <see cref="CommandName" />.
 /// </param>
 /// <param name="Description">
-///     <para>
-///         Description for
-///         <see cref="ApplicationCommandTypes.ChatInput" /> commands.
-///     </para>
-///     <para> 1-100 characters long.</para>
-///     <para>
-///         Empty for <see cref="ApplicationCommandTypes.User" />
-///         and <see cref="ApplicationCommandTypes.Message" /> commands.
-///     </para>
+///     Description for
+///     <see cref="ApplicationCommandTypes.ChatInput" /> commands.
+///     1-100 characters long. Empty for
+///     <see cref="ApplicationCommandTypes.User" />
+///     and <see cref="ApplicationCommandTypes.Message" /> commands.
 /// </param>
 /// <param name="LocalizedDescriptions">
 ///     Localization dictionary for <see cref="Description" /> field.
@@ -47,11 +42,9 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 ///     <see cref="Description" />.
 /// </param>
 /// <param name="Options">
-///     <para>
-///         Parameters for the command. Used only in
-///         <see cref="ApplicationCommandTypes.ChatInput" /> commands;
-///     </para>
-///     <para>max. of 25.</para>
+///     Parameters for the command. Used only in
+///     <see cref="ApplicationCommandTypes.ChatInput" /> commands;
+///     max. of 25.
 /// </param>
 /// <param name="DefaultMemberPermissions">
 ///     Set of permissions for the user to be able to execute the
@@ -153,7 +146,8 @@ public sealed record ApplicationCommand(
     ///     <see
     ///         href="https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-naming">
     ///         Discord's requirements
-    ///     </see>.
+    ///     </see>
+    ///     .
     /// </summary>
     /// <returns>
     ///     Whether the <see cref="CommandName" /> matches the
@@ -170,13 +164,18 @@ public sealed record ApplicationCommand(
     /// </summary>
     public bool ValidateCommandOptions()
     {
-        if (!Options.IsValueSet) return true;
+        if (!Options.IsValueSet)
+        {
+            return true;
+        }
 
         bool wasPreviousOptionRequired = true;
         foreach (ApplicationCommandOption option in Options.Value)
         {
             if (option.IsRequired && !wasPreviousOptionRequired)
+            {
                 return false;
+            }
 
             wasPreviousOptionRequired = option.IsRequired;
         }

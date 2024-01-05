@@ -6,10 +6,10 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 /// <summary>
 ///     Base type for all message components.
 /// </summary>
-/// <param name="Type">
+/// <param name="ComponentType">
 ///     A type of the component.
 /// </param>
 [PublicAPI]
 public abstract record MessageComponent(
     [property: JsonPropertyNameOverride("type")]
-    MessageComponentTypes Type);
+    MessageComponentTypes ComponentType);

@@ -12,8 +12,7 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 ///     values for a user to pick.
 /// </remarks>
 /// <param name="Name">
-///     <para>Choice name.</para>
-///     <para>1-100 character long.</para>
+///     Choice name. 1-100 character long.
 /// </param>
 /// <param name="LocalizedName">
 ///     Localization dictionary for the <see cref="Name" /> field.

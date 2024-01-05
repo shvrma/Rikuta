@@ -7,14 +7,9 @@ namespace Rikuta.Models;
 ///     derives from; thought and some properties aren't available.
 /// </summary>
 /// <remarks>
-///     <para>
-///         Excluded properties should be mentioned anywhere, basically
-///         in XML-comments.
-///     </para>
-///     <para>
-///         It should be mentioned that converting to the derived type
-///         can result in a prohibited or mistaken state.
-///     </para>
+///     Excluded properties should be mentioned anywhere, basically
+///     in XML comments. Converting to the derived type
+///     can result in a prohibited or mistaken state.
 /// </remarks>
 [PublicAPI]
 public interface IPartialEntity

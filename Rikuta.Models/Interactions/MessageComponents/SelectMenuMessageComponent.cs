@@ -63,7 +63,7 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 /// </param>
 [PublicAPI]
 public record SelectMenuMessageComponent(
-    MessageComponentTypes Type,
+    MessageComponentTypes ComponentType,
     string CustomID,
     [property: JsonPropertyNameOverride("options")]
     Optional<SelectOption[]> Options,
@@ -79,4 +79,4 @@ public record SelectMenuMessageComponent(
     Optional<int> MaxValues,
     [property: JsonPropertyNameOverride("disabled")]
     Optional<bool> IsDisabled) : MessageComponentWithID(
-        Type, CustomID);
+        ComponentType, CustomID);
