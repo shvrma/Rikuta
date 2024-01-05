@@ -26,8 +26,7 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 ///     A button style.
 /// </param>
 /// <param name="Label">
-///     Text that appears on the button.
-///     <para>Max. 80 characters long.</para>
+///     Text that appears on the button. Max. 80 characters long.
 /// </param>
 /// <param name="Emoji">
 ///     Emoji that is placed on the button.
@@ -35,14 +34,9 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 /// <param name="Url">
 ///     URL for <see cref="ButtonStyles.Link" /> buttons.
 ///     <remarks>
-///         <para>
-///             Link buttons do not send an interaction to your app
-///             when clicked.
-///         </para>
-///         <para>
-///             Link buttons must have a url, and cannot have a
-///             <paramref name="CustomID" />.
-///         </para>
+///         Link buttons do not send an interaction to your app
+///         when clicked. Link buttons must have a url, and cannot
+///         have a <paramref name="CustomID" />.
 ///     </remarks>
 /// </param>
 /// <param name="IsDisabled">
