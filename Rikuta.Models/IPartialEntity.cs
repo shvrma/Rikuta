@@ -3,18 +3,32 @@ using JetBrains.Annotations;
 namespace Rikuta.Models;
 
 /// <summary>
-///     Specifies that type handles partial data about the entity it
-///     derives from; thought and some properties aren't available.
+///     A marker interface specifies that type handles partial data
+///     about the entity of type <typeparamref name="TOriginal" />;
+///     thought some properties aren't available.
 /// </summary>
+/// <typeparam name="TPartial">
+///     Type, implementing this interface.
+/// </typeparam>
+/// <typeparam name="TOriginal">
+///     The original type, from whom this type inherits several
+///     properties.
+/// </typeparam>
 /// <remarks>
 ///     Excluded properties should be mentioned anywhere, basically
-///     in XML comments. Converting to the derived type
-///     can result in a prohibited or mistaken state.
+///     in XML comments.
 /// </remarks>
 [PublicAPI]
-public interface IPartialEntity
+public interface IPartialEntity<out TPartial, in TOriginal>
+        where TPartial : IPartialEntity<TPartial, TOriginal>
 {
-    public static Exception PartialDataUnavailableException =>
+    public Exception PartialDataUnavailableException =>
             new NotSupportedException(
                     "This data is not available on the partial entity.");
+
+    static abstract implicit operator
+            TPartial(TOriginal entity);
+
+    static abstract IPartialEntity<TPartial, TOriginal>
+            ToPartialEntity(TOriginal entity);
 }

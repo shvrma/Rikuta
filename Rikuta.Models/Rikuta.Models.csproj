@@ -1,29 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <IsTrimmable>True</IsTrimmable>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <IsTrimmable>True</IsTrimmable>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <IsTrimmable>True</IsTrimmable>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <IsTrimmable>True</IsTrimmable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Rikuta.Helpers\Rikuta.Helpers.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Rikuta.Helpers\Rikuta.Helpers.csproj"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Gateway\" />
-  </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Gateway\"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="JetBrains.Annotations" Version="2023.3.0"/>
+    </ItemGroup>
 
 </Project>
