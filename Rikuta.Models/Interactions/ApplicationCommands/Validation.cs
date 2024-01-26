@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
+using JetBrains.Annotations;
 
-namespace Rikuta.Helpers;
+namespace Rikuta.Models.Interactions.ApplicationCommands;
 
+[PublicAPI]
 public static partial class Validation
 {
     [GeneratedRegex(

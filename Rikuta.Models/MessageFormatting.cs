@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JetBrains.Annotations;
 
-namespace Rikuta.Helpers;
+namespace Rikuta.Models;
 
+[PublicAPI]
 public static class MessageFormatting
 {
     public static string FormatUser(string userID) => $"<@{userID}>";
@@ -26,13 +23,11 @@ public static class MessageFormatting
         => $"</{commandName} {subcommandName}:{commandID}>";
 
     public static string FormatSubcommand(
-        string commandName,
-        string subcommandGroup,
-        string subcommandName,
-        string commandID)
+        string commandName, string subcommandGroup,
+        string subcommandName, string commandID)
         => $"</{commandName} {subcommandGroup} {subcommandName}:{commandID}>";
 
-    public static string FormatStandartEmoji(char emoji)
+    public static string FormatStandardEmoji(char emoji)
         => emoji.ToString();
 
     public static string FormatCustomEmoji(string emojiName,

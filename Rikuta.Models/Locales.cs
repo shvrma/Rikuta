@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JetBrains.Annotations;
 
-namespace Rikuta.Helpers;
+namespace Rikuta.Models;
 
+[PublicAPI]
 public static class Locales
 {
     public const string Indonesian       = "id";

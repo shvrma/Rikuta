@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using JetBrains.Annotations;
 
-namespace Rikuta.Helpers;
+namespace Rikuta.Models;
 
-public static class RikutaConstants
+[PublicAPI]
+public static class Constants
 {
     public const string VersionPathPrefix = "/v10";
 
