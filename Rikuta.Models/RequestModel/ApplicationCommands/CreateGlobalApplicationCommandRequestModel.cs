@@ -1,6 +1,5 @@
 ﻿using JetBrains.Annotations;
 using Rikuta.Models.Interactions.ApplicationCommands;
-using Rikuta.Models.Serialization;
 
 namespace Rikuta.Models.RequestModel.ApplicationCommands;
 
@@ -12,7 +11,7 @@ namespace Rikuta.Models.RequestModel.ApplicationCommands;
 ///     </see>
 ///     endpoint.
 /// </summary>
-/// <inheritdoc cref="ApplicationCommand"/>
+/// <seealso cref="ApplicationCommand" />
 [PublicAPI]
 public record CreateGlobalApplicationCommandRequestModel(
     [property: JsonPropertyNameOverride("name")]

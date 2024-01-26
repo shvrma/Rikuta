@@ -1,5 +1,4 @@
 ﻿using JetBrains.Annotations;
-using Rikuta.Models.Serialization;
 
 namespace Rikuta.Models.Interactions.ApplicationCommands;
 
@@ -30,4 +29,4 @@ public sealed record ApplicationCommandOptionChoice(
     [property: JsonPropertyNameOverride("name_localizations")]
     Optional<IDictionary<string, string>> LocalizedName,
     [property: JsonPropertyNameOverride("value")]
-    IJsonValue Value);
+    JsonValue Value);

@@ -1,6 +1,5 @@
 ﻿using JetBrains.Annotations;
 using Rikuta.Models.Resources.Channel;
-using Rikuta.Models.Serialization;
 
 namespace Rikuta.Models.Interactions.MessageComponents;
 

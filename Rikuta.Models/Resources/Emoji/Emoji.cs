@@ -1,7 +1,6 @@
 ﻿using JetBrains.Annotations;
-using Rikuta.Models.Serialization;
 
-namespace Rikuta.Models.Resources;
+namespace Rikuta.Models.Resources.Emoji;
 
 /// <summary>
 ///     An emoji model.

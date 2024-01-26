@@ -1,7 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using Rikuta.Models.Interactions.ApplicationCommands;
-using Rikuta.Models.Serialization;
 
 namespace Rikuta.Models.Rest.RequestModel.ApplicationCommands;
 

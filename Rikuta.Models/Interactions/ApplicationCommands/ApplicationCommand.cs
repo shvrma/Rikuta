@@ -1,6 +1,5 @@
 ﻿using JetBrains.Annotations;
 using Rikuta.Helpers;
-using Rikuta.Models.Serialization;
 
 namespace Rikuta.Models.Interactions.ApplicationCommands;
 
