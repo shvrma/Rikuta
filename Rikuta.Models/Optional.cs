@@ -24,7 +24,7 @@ public readonly record struct Optional<T>(
     T Value,
     bool IsValueSet = true)
 {
-    public static Optional<T> Empty => default;
+    public static Optional<T> Empty => default(Optional<T>);
 
     public static implicit operator T(Optional<T> optional)
         => optional.Value;
