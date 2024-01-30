@@ -25,11 +25,7 @@ namespace Rikuta.Models.Permissions;
 ///     Whether this role is pinned in the user listing.
 /// </param>
 /// <param name="Icon">
-///     Role icon hash. Read about it
-///     <see
-///         href="https://discord.com/developers/docs/reference#image-formatting">
-///         there
-///     </see>.
+///     Role icon hash.
 /// </param>
 /// <param name="UnicodeEmoji">
 ///     Role Unicode emoji.
@@ -40,10 +36,10 @@ namespace Rikuta.Models.Permissions;
 /// <param name="Permissions">
 ///     Permissions for this role.
 /// </param>
-/// <param name="Managed">
+/// <param name="IsManaged">
 ///     Whether this role is managed by an integration
 /// </param>
-/// <param name="Mentionable">
+/// <param name="IsMentionable">
 ///     Whether this role is mentionable
 /// </param>
 /// <param name="Tags">
@@ -71,9 +67,9 @@ public record Role(
     [property: JsonPropertyNameOverride("permissions")]
     PermissionsString Permissions,
     [property: JsonPropertyNameOverride("managed")]
-    bool Managed,
+    bool  IsManaged,
     [property: JsonPropertyNameOverride("mentionable")]
-    bool Mentionable,
+    bool IsMentionable,
     [property: JsonPropertyNameOverride("tags")]
     Optional<RoleTags> Tags,
     [property: JsonPropertyNameOverride("flags")]

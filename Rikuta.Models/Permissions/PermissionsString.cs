@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace Rikuta.Models;
+namespace Rikuta.Models.Permissions;
 
 /// <summary>
 ///     Represents a set of permissions given to some entity.
@@ -28,17 +28,13 @@ public record struct PermissionsString
 
     public static implicit operator PermissionsFlags(
         PermissionsString permissions)
-    {
-        return permissions._value;
-    }
+        => permissions._value;
 
     public static implicit operator string?(
         PermissionsString permissions)
-    {
-        return permissions._value == 0
-            ? default
-            : permissions._value.ToString();
-    }
+        => permissions._value == 0
+                ? default(string)
+                : permissions._value.ToString();
 
     public void AddPermission(PermissionsFlags permission)
     {

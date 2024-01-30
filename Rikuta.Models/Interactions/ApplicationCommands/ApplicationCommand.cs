@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using Rikuta.Models.Permissions;
 
 namespace Rikuta.Models.Interactions.ApplicationCommands;
 
