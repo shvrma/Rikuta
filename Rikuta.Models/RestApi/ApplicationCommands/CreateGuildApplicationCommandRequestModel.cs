@@ -2,7 +2,7 @@
 using Rikuta.Models.Interactions.ApplicationCommands;
 using Rikuta.Models.Permissions;
 
-namespace Rikuta.Models.RequestModel.ApplicationCommands;
+namespace Rikuta.Models.RestApi.ApplicationCommands;
 
 /// <summary>
 ///     Contain parameters used to pass in the
@@ -12,7 +12,32 @@ namespace Rikuta.Models.RequestModel.ApplicationCommands;
 ///     </see>
 ///     endpoint.
 /// </summary>
-/// <seealso cref="ApplicationCommand" />
+/// <param name="Name">
+///     Name of command.
+/// </param>
+/// <param name="LocalizedName">
+///     Localization dictionary for the <see cref="Name" />.
+/// </param>
+/// <param name="Description">
+///     Description for
+///     <see cref="ApplicationCommandTypes.ChatInput" /> commands.
+/// </param>
+/// <param name="LocalizedDescription">
+///     Localization dictionary for the <see cref="Description" />.
+/// </param>
+/// <param name="Options">
+///     The parameters for the command
+/// </param>
+/// <param name="DefaultRequiredMemberPermissions">
+///     Set of permissions for the user to be able to execute
+///     the command.
+/// </param>
+/// <param name="Type">
+///     Command type.
+/// </param>
+/// <param name="IsNsfwCommand">
+///     Indicates whether the command is age-restricted.
+/// </param>
 [PublicAPI]
 public record CreateGuildApplicationCommandRequestModel(
     [property: JsonPropertyNameOverride("name")]

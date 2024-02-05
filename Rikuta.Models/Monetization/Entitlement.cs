@@ -4,5 +4,4 @@ namespace Rikuta.Models.Monetization;
 
 // TODO.
 [PublicAPI]
-public record Entitlement(
-    );
+public record Entitlement;

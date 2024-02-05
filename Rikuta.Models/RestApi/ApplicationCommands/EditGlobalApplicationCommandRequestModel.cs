@@ -2,21 +2,21 @@
 using Rikuta.Models.Interactions.ApplicationCommands;
 using Rikuta.Models.Permissions;
 
-namespace Rikuta.Models.Rest.RequestModel.ApplicationCommands;
+namespace Rikuta.Models.RestApi.ApplicationCommands;
 
 /// <summary>
 ///     Contain parameters used to pass in the
 ///     <see
-///         href="https://discord.com/developers/docs/interactions/application-commands#create-global-application-command">
-///         Create
-///         Global Application Command
+///         href="https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command">
+///         Edit Global Application Command
 ///     </see>
 ///     endpoint.
 /// </summary>
-/// <param name="Name">	Name of command.</param>
+/// <param name="Name">
+///     Name of command.
+/// </param>
 /// <param name="LocalizedName">
-///     Localization dictionary for the
-///     <see cref="Name" />.
+///     Localization dictionary for the <see cref="Name" />.
 /// </param>
 /// <param name="Description">
 ///     Description for
@@ -26,19 +26,21 @@ namespace Rikuta.Models.Rest.RequestModel.ApplicationCommands;
 ///     Localization dictionary for the
 ///     <see cref="Description" />.
 /// </param>
-/// <param name="Options">The parameters for the command</param>
-/// <param name="DefaultRequiredMemberPermissions">
-///     Set of permissions for
-///     the user to be able to execute the command.
+/// <param name="Options">
+///     The parameters for the command.
 /// </param>
-/// <param name="IsDMAllowed">Whether this command is allowed in DM.</param>
-/// <param name="Type">Command type.</param>
+/// <param name="DefaultRequiredMemberPermissions">
+///     Set of permissions for the user to be able to execute
+///     the command.
+/// </param>
+/// <param name="IsDMAllowed">
+///     Whether this command is allowed in DM.
+/// </param>
 /// <param name="IsNsfwCommand">
-///     Indicates whether the command is
-///     age-restricted.
+///     Indicates whether the command is age-restricted.
 /// </param>
 [PublicAPI]
-public record CreateGlobalApplicationCommandRequestModel(
+public record EditGlobalApplicationCommandRequestModel(
     [property: JsonPropertyNameOverride("name")]
     string Name,
     [property: JsonPropertyNameOverride("name_localizations")]
@@ -53,7 +55,5 @@ public record CreateGlobalApplicationCommandRequestModel(
     Optional<PermissionsString> DefaultRequiredMemberPermissions,
     [property: JsonPropertyNameOverride("dm_permission")]
     Optional<bool?> IsDMAllowed,
-    [property: JsonPropertyNameOverride("type")]
-    Optional<ApplicationCommandTypes> Type,
     [property: JsonPropertyNameOverride("nsfw")]
     Optional<bool> IsNsfwCommand);

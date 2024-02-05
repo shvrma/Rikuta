@@ -67,7 +67,7 @@ public record Role(
     [property: JsonPropertyNameOverride("permissions")]
     PermissionsString Permissions,
     [property: JsonPropertyNameOverride("managed")]
-    bool  IsManaged,
+    bool IsManaged,
     [property: JsonPropertyNameOverride("mentionable")]
     bool IsMentionable,
     [property: JsonPropertyNameOverride("tags")]

@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 namespace Rikuta.Models.Resources.User;
 
 /// <summary>
-///     Service names for <see cref="UserConnection"/>.
+///     Service names for <see cref="UserConnection" />.
 /// </summary>
 [PublicAPI]
 public static class ConnectionServices

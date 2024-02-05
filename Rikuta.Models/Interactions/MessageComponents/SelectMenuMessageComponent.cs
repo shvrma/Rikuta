@@ -78,4 +78,5 @@ public record SelectMenuMessageComponent(
     Optional<int> MaxValues,
     [property: JsonPropertyNameOverride("disabled")]
     Optional<bool> IsDisabled) : MessageComponentWithID(
-        ComponentType, CustomID);
+        ComponentType,
+        CustomID);

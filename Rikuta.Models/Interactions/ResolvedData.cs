@@ -1,6 +1,5 @@
 using JetBrains.Annotations;
 using Rikuta.Models.Permissions;
-using Rikuta.Models.Resources;
 using Rikuta.Models.Resources.Channel;
 using Rikuta.Models.Resources.User;
 

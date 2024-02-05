@@ -12,10 +12,10 @@ namespace Rikuta.Models.Interactions.MessageComponents;
 [PublicAPI]
 public enum ButtonStyles
 {
-    Primary = 1,
+    Primary   = 1,
     Secondary = 2,
-    Success = 3,
-    Danger = 4,
+    Success   = 3,
+    Danger    = 4,
 
     /// <summary>
     ///     A type with a specific meaning; directs to a particular

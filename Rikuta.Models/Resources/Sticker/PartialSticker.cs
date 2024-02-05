@@ -7,7 +7,7 @@ namespace Rikuta.Models.Resources.Sticker;
 /// </summary>
 /// <remarks>
 ///     Handles the smallest amount of data required to render a
-///     sticker. 
+///     sticker.
 /// </remarks>
 /// <param name="ID">
 ///     ID of the sticker.
@@ -27,9 +27,9 @@ public record PartialSticker(
 {
     public static implicit operator PartialSticker(Sticker sticker)
         => new(
-                ID: sticker.ID,
-                Name: sticker.Name,
-                StickerFormatType: sticker.StickerFormatType);
+                sticker.ID,
+                sticker.Name,
+                sticker.StickerFormatType);
 
     public static IPartialEntity<PartialSticker, Sticker>
             ToPartialEntity(Sticker entity)

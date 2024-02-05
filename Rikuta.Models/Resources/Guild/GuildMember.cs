@@ -4,5 +4,4 @@ namespace Rikuta.Models.Resources.Guild;
 
 // TODO.
 [PublicAPI]
-public record GuildMember(
-    );
+public record GuildMember;

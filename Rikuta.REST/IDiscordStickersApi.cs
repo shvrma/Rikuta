@@ -153,8 +153,8 @@ public interface IDiscordStickersApi
     {
         IApiResponse response = await
                 DeleteGuildStickerInternalAsync(
-                        guildID: guildID,
-                        stickerID: stickerID);
+                        guildID,
+                        stickerID);
 
         return response.StatusCode == HttpStatusCode.NoContent;
     }

@@ -4,5 +4,4 @@ namespace Rikuta.Models.Resources.Channel;
 
 // TODO.
 [PublicAPI]
-public record Message(
-    );
+public record Message;

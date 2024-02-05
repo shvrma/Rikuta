@@ -55,4 +55,5 @@ public record ButtonMessageComponent(
     Optional<Uri> Url,
     [property: JsonPropertyNameOverride("disabled")]
     Optional<bool> IsDisabled) : MessageComponentWithID(
-        MessageComponentTypes.Button, CustomID);
+        MessageComponentTypes.Button,
+        CustomID);

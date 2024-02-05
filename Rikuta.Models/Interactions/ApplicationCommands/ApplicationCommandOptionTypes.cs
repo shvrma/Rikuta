@@ -5,12 +5,12 @@ namespace Rikuta.Models.Interactions.ApplicationCommands;
 [PublicAPI]
 public enum ApplicationCommandOptionTypes : byte
 {
-    Subcommand = 1,
+    Subcommand      = 1,
     SubcommandGroup = 2,
-    String = 3,
-    Int = 4,
-    Bool = 5,
-    User = 6,
+    String          = 3,
+    Int             = 4,
+    Bool            = 5,
+    User            = 6,
 
     /// <summary>
     ///     Includes all channel types and categories.
@@ -22,6 +22,6 @@ public enum ApplicationCommandOptionTypes : byte
     ///     Includes users and roles.
     /// </summary>
     Mentionable = 9,
-    Number = 10,
+    Number     = 10,
     Attachment = 11
 }

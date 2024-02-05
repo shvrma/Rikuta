@@ -9,9 +9,9 @@ public enum ChannelTypes
     ///     A text channel within a server.
     /// </summary>
     GuildText = 0,
-    DM = 1,
+    DM         = 1,
     GuildVoice = 2,
-    GroupDM = 3,
+    GroupDM    = 3,
 
     /// <summary>
     ///     An organizational category that contains up to 50 channels.
@@ -29,7 +29,7 @@ public enum ChannelTypes
     ///     <see cref="GuildAnnouncement" /> channel.
     /// </summary>
     AnnouncementThread = 10,
-    PublicThread = 11,
+    PublicThread  = 11,
     PrivateThread = 12,
 
     /// <summary>

@@ -8,7 +8,8 @@ namespace Rikuta.Models;
 /// </summary>
 /// <param name="Value">An underlying value of Snowflake.</param>
 [PublicAPI]
-public readonly record struct Snowflake(ulong Value)
+public readonly record struct Snowflake(
+    ulong Value)
 {
     public override string ToString()
         => Value.ToString();

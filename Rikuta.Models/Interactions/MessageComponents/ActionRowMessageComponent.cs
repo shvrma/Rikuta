@@ -27,14 +27,16 @@ public record ActionRowMessageComponent(
         foreach (MessageComponent component in Components)
         {
             // Action rows can not be nested.
-            if (component.ComponentType == MessageComponentTypes.ActionRow)
+            if (component.ComponentType ==
+                MessageComponentTypes.ActionRow)
             {
                 return false;
             }
 
             // If the row contains at least one button, it is
             // considered as button row.
-            if (component.ComponentType == MessageComponentTypes.Button)
+            if (component.ComponentType ==
+                MessageComponentTypes.Button)
             {
                 isButtonRow = true;
             }
@@ -43,16 +45,25 @@ public record ActionRowMessageComponent(
             {
                 // If it is a button row, check for an impostor
                 // component in our buttons row.
-                if (component.ComponentType != MessageComponentTypes.Button)
+                if (component.ComponentType !=
+                    MessageComponentTypes.Button)
+                {
                     return false;
+                }
 
                 // One row can hold a maximum of 5 buttons.
-                if (increment > 5) return false;
+                if (increment > 5)
+                {
+                    return false;
+                }
             }
             else
             {
                 // A row can hold only one select menu.
-                if (increment > 1) return false;
+                if (increment > 1)
+                {
+                    return false;
+                }
             }
 
             increment++;
