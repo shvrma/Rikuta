@@ -34,7 +34,7 @@ public interface IDiscordApplicationsApi
         Snowflake applicationID, bool? includeLocalization = false);
 
     [Post("/applications/{applicationID.Value}/commands")]
-    internal Task<ApiResponse<ApplicationCommand>>
+    protected Task<ApiResponse<ApplicationCommand>>
             CreateGlobalApplicationCommandInternalAsync(
                 Snowflake applicationID,
                 [Body]
@@ -71,17 +71,21 @@ public interface IDiscordApplicationsApi
                         applicationID,
                         command);
 
-        // ReSharper disable once SwitchExpressionHandlesSomeKnownEnumValuesWithExceptionInDefault
-        return response.StatusCode switch
+        if (response.StatusCode == HttpStatusCode.OK)
         {
-                HttpStatusCode.OK => (WasCommandOverwritten: true,
-                    response.Content!),
-                HttpStatusCode.Created => (
-                    WasCommandOverwritten: false, response.Content!),
-                _ => throw new Exception(
-                        $"Unexpected status code: {response.StatusCode}.",
-                        response.Error)
-        };
+            return (WasCommandOverwritten: true,
+                response.Content!);
+        }
+
+        if (response.StatusCode == HttpStatusCode.Created)
+        {
+            return (WasCommandOverwritten: false,
+                response.Content!);
+        }
+
+        throw new Exception(
+                $"Unexpected status code: {response.StatusCode}.",
+                response.Error);
     }
 
     /// <summary>
@@ -193,7 +197,7 @@ public interface IDiscordApplicationsApi
 
     [Post(
             "/applications/{applicationID.Value}/guilds/{guildID.Value}/commands")]
-    internal Task<ApiResponse<ApplicationCommand>>
+    protected Task<ApiResponse<ApplicationCommand>>
             CreateGuildApplicationCommandInternalAsync(
                 Snowflake applicationID, Snowflake guildID,
                 CreateGuildApplicationCommandRequestModel command);
@@ -222,9 +226,10 @@ public interface IDiscordApplicationsApi
     ///     itself.
     /// </returns>
     async Task<(bool WasCommandOverwritten, ApplicationCommand command
-        )> CreateGuildApplicationCommandAsync(
-        Snowflake applicationID, Snowflake guildID,
-        CreateGuildApplicationCommandRequestModel command)
+                )>
+            CreateGuildApplicationCommandAsync(
+                Snowflake applicationID, Snowflake guildID,
+                CreateGuildApplicationCommandRequestModel command)
     {
         ApiResponse<ApplicationCommand> response =
                 await CreateGuildApplicationCommandInternalAsync(
@@ -232,17 +237,21 @@ public interface IDiscordApplicationsApi
                         guildID,
                         command);
 
-        // ReSharper disable once SwitchExpressionHandlesSomeKnownEnumValuesWithExceptionInDefault
-        return response.StatusCode switch
+        if (response.StatusCode == HttpStatusCode.OK)
         {
-                HttpStatusCode.OK => (WasCommandOverwritten: true,
-                    response.Content!),
-                HttpStatusCode.Created => (
-                    WasCommandOverwritten: false, response.Content!),
-                _ => throw new Exception(
-                        $"Unexpected status code: {response.StatusCode}.",
-                        response.Error)
-        };
+            return (WasCommandOverwritten: true,
+                response.Content!);
+        }
+
+        if (response.StatusCode == HttpStatusCode.Created)
+        {
+            return (WasCommandOverwritten: false,
+                response.Content!);
+        }
+
+        throw new Exception(
+                $"Unexpected status code: {response.StatusCode}.",
+                response.Error);
     }
 
     /// <summary>
@@ -393,8 +402,7 @@ public interface IDiscordApplicationsApi
     ///     <see
     ///         href="https://discord.com/developers/docs/interactions/application-commands#permissions">
     ///         there
-    ///     </see>
-    ///     .
+    ///     </see>.
     /// </remarks>
     /// <param name="applicationID">
     ///     A <see cref="Snowflake" /> ID of application.
@@ -418,9 +426,8 @@ public interface IDiscordApplicationsApi
             EditApplicationCommandPermissionsAsync(
                 Snowflake applicationID, Snowflake guildID,
                 Snowflake commandID,
-                [Body]
-                IEnumerable<ApplicationCommandPermissions>
-                permissions);
+                [Body] IEnumerable<ApplicationCommandPermissions>
+                        permissions);
 
     #endregion
 }
