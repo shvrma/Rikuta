@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using Rikuta.Models.Resources.Sticker;
 
-namespace Rikuta.Models.ResponseModel.Sticker;
+namespace Rikuta.Models.RestApi.Sticker;
 
 /// <summary>
 ///     Contain parameters used to retrieve from
@@ -12,6 +12,6 @@ namespace Rikuta.Models.ResponseModel.Sticker;
 ///     endpoint.
 /// </summary>
 [PublicAPI]
-public record ListStickerPacksResponseModel(
+public record ListStickerPacksResult(
     [property: JsonPropertyNameOverride("sticker_packs")]
     StickerPack[] StickerPacks);

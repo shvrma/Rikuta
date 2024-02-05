@@ -7,8 +7,8 @@ namespace Rikuta.Models.RestApi.ApplicationCommands;
 /// <summary>
 ///     Contain parameters used to pass in the
 ///     <see
-///         href="https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command">
-///         Edit Global Application Command
+///         href="https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command">
+///         Edit Guild Application Command
 ///     </see>
 ///     endpoint.
 /// </summary>
@@ -16,7 +16,8 @@ namespace Rikuta.Models.RestApi.ApplicationCommands;
 ///     Name of command.
 /// </param>
 /// <param name="LocalizedName">
-///     Localization dictionary for the <see cref="Name" />.
+///     Localization dictionary for the
+///     <see cref="Name" />.
 /// </param>
 /// <param name="Description">
 ///     Description for
@@ -33,14 +34,14 @@ namespace Rikuta.Models.RestApi.ApplicationCommands;
 ///     Set of permissions for the user to be able to execute
 ///     the command.
 /// </param>
-/// <param name="IsDMAllowed">
-///     Whether this command is allowed in DM.
+/// <param name="Type">
+///     Command type.
 /// </param>
 /// <param name="IsNsfwCommand">
 ///     Indicates whether the command is age-restricted.
 /// </param>
 [PublicAPI]
-public record EditGlobalApplicationCommandRequestModel(
+public record EditGuildApplicationCommandPayload(
     [property: JsonPropertyNameOverride("name")]
     string Name,
     [property: JsonPropertyNameOverride("name_localizations")]
@@ -53,7 +54,7 @@ public record EditGlobalApplicationCommandRequestModel(
     Optional<ApplicationCommandOption[]> Options,
     [property: JsonPropertyNameOverride("default_member_permissions")]
     Optional<PermissionsString> DefaultRequiredMemberPermissions,
-    [property: JsonPropertyNameOverride("dm_permission")]
-    Optional<bool?> IsDMAllowed,
+    [property: JsonPropertyNameOverride("type")]
+    Optional<ApplicationCommandTypes> Type,
     [property: JsonPropertyNameOverride("nsfw")]
     Optional<bool> IsNsfwCommand);

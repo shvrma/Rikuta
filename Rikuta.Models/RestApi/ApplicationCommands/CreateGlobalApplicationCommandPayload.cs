@@ -43,7 +43,7 @@ namespace Rikuta.Models.RestApi.ApplicationCommands;
 ///     Indicates whether the command is age-restricted.
 /// </param>
 [PublicAPI]
-public record CreateGlobalApplicationCommandRequestModel(
+public record CreateGlobalApplicationCommandPayload(
     [property: JsonPropertyNameOverride("name")]
     string Name,
     [property: JsonPropertyNameOverride("name_localizations")]

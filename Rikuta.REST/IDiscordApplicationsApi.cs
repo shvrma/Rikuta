@@ -38,7 +38,7 @@ public interface IDiscordApplicationsApi
             CreateGlobalApplicationCommandInternalAsync(
                 Snowflake applicationID,
                 [Body]
-                CreateGlobalApplicationCommandRequestModel command);
+                CreateGlobalApplicationCommandPayload command);
 
     /// <summary>
     ///     Create a new global command. Returns <c>false</c> as the value
@@ -64,7 +64,7 @@ public interface IDiscordApplicationsApi
     async Task<(bool WasCommandOverwritten, ApplicationCommand command
         )> CreateGlobalApplicationCommandAsync(
         Snowflake applicationID,
-        CreateGlobalApplicationCommandRequestModel command)
+        CreateGlobalApplicationCommandPayload command)
     {
         ApiResponse<ApplicationCommand> response =
                 await CreateGlobalApplicationCommandInternalAsync(
@@ -126,7 +126,7 @@ public interface IDiscordApplicationsApi
             "/applications/{applicationID.Value}/commands/{commandID.Value}")]
     Task<ApplicationCommand> EditGlobalApplicationCommandAsync(
         Snowflake applicationID, Snowflake commandID,
-        [Body] EditGlobalApplicationCommandRequestModel command);
+        [Body] EditGlobalApplicationCommandPayload command);
 
     /// <summary>
     ///     Deletes a global command.
@@ -200,7 +200,7 @@ public interface IDiscordApplicationsApi
     protected Task<ApiResponse<ApplicationCommand>>
             CreateGuildApplicationCommandInternalAsync(
                 Snowflake applicationID, Snowflake guildID,
-                CreateGuildApplicationCommandRequestModel command);
+                CreateGuildApplicationCommandPayload command);
 
     /// <summary>
     ///     Create a new guild command.
@@ -229,7 +229,7 @@ public interface IDiscordApplicationsApi
                 )>
             CreateGuildApplicationCommandAsync(
                 Snowflake applicationID, Snowflake guildID,
-                CreateGuildApplicationCommandRequestModel command)
+                CreateGuildApplicationCommandPayload command)
     {
         ApiResponse<ApplicationCommand> response =
                 await CreateGuildApplicationCommandInternalAsync(
@@ -301,7 +301,7 @@ public interface IDiscordApplicationsApi
     Task<ApplicationCommand> EditGuildApplicationCommandAsync(
         Snowflake applicationID, Snowflake guildID,
         Snowflake commandID,
-        [Body] EditGuildApplicationCommandRequestModel command);
+        [Body] EditGuildApplicationCommandPayload command);
 
     /// <summary>
     ///     Delete a guild command.

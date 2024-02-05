@@ -7,8 +7,8 @@ namespace Rikuta.Models.RestApi.ApplicationCommands;
 /// <summary>
 ///     Contain parameters used to pass in the
 ///     <see
-///         href="https://discord.com/developers/docs/interactions/application-commands#create-guild-application-command">
-///         Create Guild Application Command
+///         href="https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command">
+///         Edit Global Application Command
 ///     </see>
 ///     endpoint.
 /// </summary>
@@ -23,23 +23,24 @@ namespace Rikuta.Models.RestApi.ApplicationCommands;
 ///     <see cref="ApplicationCommandTypes.ChatInput" /> commands.
 /// </param>
 /// <param name="LocalizedDescription">
-///     Localization dictionary for the <see cref="Description" />.
+///     Localization dictionary for the
+///     <see cref="Description" />.
 /// </param>
 /// <param name="Options">
-///     The parameters for the command
+///     The parameters for the command.
 /// </param>
 /// <param name="DefaultRequiredMemberPermissions">
 ///     Set of permissions for the user to be able to execute
 ///     the command.
 /// </param>
-/// <param name="Type">
-///     Command type.
+/// <param name="IsDMAllowed">
+///     Whether this command is allowed in DM.
 /// </param>
 /// <param name="IsNsfwCommand">
 ///     Indicates whether the command is age-restricted.
 /// </param>
 [PublicAPI]
-public record CreateGuildApplicationCommandRequestModel(
+public record EditGlobalApplicationCommandPayload(
     [property: JsonPropertyNameOverride("name")]
     string Name,
     [property: JsonPropertyNameOverride("name_localizations")]
@@ -52,7 +53,7 @@ public record CreateGuildApplicationCommandRequestModel(
     Optional<ApplicationCommandOption[]> Options,
     [property: JsonPropertyNameOverride("default_member_permissions")]
     Optional<PermissionsString> DefaultRequiredMemberPermissions,
-    [property: JsonPropertyNameOverride("type")]
-    Optional<ApplicationCommandTypes> Type,
+    [property: JsonPropertyNameOverride("dm_permission")]
+    Optional<bool?> IsDMAllowed,
     [property: JsonPropertyNameOverride("nsfw")]
     Optional<bool> IsNsfwCommand);

@@ -1,6 +1,7 @@
+using JetBrains.Annotations;
 using Rikuta.Models.Resources.Sticker;
 
-namespace Rikuta.Models.RequestModel.Sticker;
+namespace Rikuta.Models.RestApi.Sticker;
 
 /// <summary>
 ///     Contain parameters used to pass in the
@@ -15,7 +16,8 @@ namespace Rikuta.Models.RequestModel.Sticker;
 ///     Lottie JSON file, max. 512 KiB.
 /// </param>
 /// <seealso cref="Sticker" />
-public record CreateGuildStickerRequestModel(
+[PublicAPI]
+public record CreateGuildStickerPayload(
     [property: JsonPropertyNameOverride("name")]
     string Name,
     [property: JsonPropertyNameOverride("description")]

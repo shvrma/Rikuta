@@ -1,4 +1,6 @@
-namespace Rikuta.Models.RequestModel.Sticker;
+using JetBrains.Annotations;
+
+namespace Rikuta.Models.RestApi.Sticker;
 
 /// <summary>
 ///     Contain parameters used to pass in the
@@ -18,10 +20,11 @@ namespace Rikuta.Models.RequestModel.Sticker;
 ///     Autocomplete/suggestion tags for the sticker (max.
 ///     200 characters).
 /// </param>
-public record ModifyGuildStickerRequestModel(
-    [property: JsonPropertyNameOverrideAttribute("name")]
+[PublicAPI]
+public record ModifyGuildStickerPayload(
+    [property: JsonPropertyNameOverride("name")]
     Optional<string> Name,
-    [property: JsonPropertyNameOverrideAttribute("description")]
+    [property: JsonPropertyNameOverride("description")]
     Optional<string?> Description,
-    [property: JsonPropertyNameOverrideAttribute("tags")]
+    [property: JsonPropertyNameOverride("tags")]
     Optional<string> Tags);

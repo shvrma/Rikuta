@@ -1,9 +1,8 @@
 using System.Net;
 using Refit;
 using Rikuta.Models;
-using Rikuta.Models.RequestModel.Sticker;
 using Rikuta.Models.Resources.Sticker;
-using Rikuta.Models.ResponseModel.Sticker;
+using Rikuta.Models.RestApi.Sticker;
 
 namespace Rikuta.REST;
 
@@ -30,7 +29,7 @@ public interface IDiscordStickersApi
     ///     Returns a list of available sticker packs.
     /// </summary>
     [Get("/sticker-packs")]
-    Task<ListStickerPacksResponseModel> ListStickerPacksAsync();
+    Task<ListStickerPacksResult> ListStickerPacksAsync();
 
     /// <summary>
     ///     Returns an array of <see cref="Sticker" /> objects for the
@@ -92,13 +91,13 @@ public interface IDiscordStickersApi
     /// <param name="guildID">
     ///     The ID of the guild to fetch from.
     /// </param>
-    /// <param name="requestModel">
+    /// <param name="payload">
     ///     Params to create a sticker.
     /// </param>
     [Multipart]
     [Post("/guilds/{guildID.Value}/stickers")]
     Task<Sticker> CreateGuildStickerAsync(Snowflake guildID,
-        [Body] CreateGuildStickerRequestModel requestModel);
+        [Body] CreateGuildStickerPayload payload);
 
     /// <summary>
     ///     Modify the given sticker.
@@ -115,7 +114,7 @@ public interface IDiscordStickersApi
     /// <param name="stickerID">
     ///     ID of the sticker.
     /// </param>
-    /// <param name="requestModel">
+    /// <param name="payload">
     ///     Params to modify guild sticker.
     /// </param>
     /// <returns>
@@ -124,7 +123,7 @@ public interface IDiscordStickersApi
     [Patch("/guilds/{guildID.Value}/stickers/{stickerID.Value}")]
     Task<Sticker> ModifyGuildStickerAsync(Snowflake guildID,
         Snowflake stickerID,
-        ModifyGuildStickerRequestModel requestModel);
+        ModifyGuildStickerPayload payload);
 
     /// <summary>
     ///     Internal fetch implementation; not meant to be part of publicly
