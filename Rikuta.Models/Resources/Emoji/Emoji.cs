@@ -52,7 +52,7 @@ public record Emoji(
     [property: JsonPropertyNameOverride("roles")]
     Optional<Snowflake[]> AllowedRoles,
     [property: JsonPropertyNameOverride("user")]
-    Optional<User> User,
+    Optional<User.User> User,
     [property: JsonPropertyNameOverride("require_colons")]
     Optional<bool> RequireColons,
     [property: JsonPropertyNameOverride("managed")]

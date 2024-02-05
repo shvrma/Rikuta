@@ -4,6 +4,7 @@ using Rikuta.Models.Permissions;
 using Rikuta.Models.Resources;
 using Rikuta.Models.Resources.Channel;
 using Rikuta.Models.Resources.Guild;
+using Rikuta.Models.Resources.User;
 
 namespace Rikuta.Models.Interactions;
 

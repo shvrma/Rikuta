@@ -68,6 +68,6 @@ public record Sticker(
     [property: JsonPropertyNameOverride("guild_id")]
     Optional<Snowflake> GuildID,
     [property: JsonPropertyNameOverride("user")]
-    Optional<User> User,
+    Optional<User.User> User,
     [property: JsonPropertyNameOverride("sort_value")]
     Optional<int> SortValue);
