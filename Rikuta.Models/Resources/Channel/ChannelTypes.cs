@@ -29,7 +29,13 @@ public enum ChannelTypes
     ///     <see cref="GuildAnnouncement" /> channel.
     /// </summary>
     AnnouncementThread = 10,
-    PublicThread  = 11,
+
+    /// <summary>
+    ///     A temporary sub-channel within a <see cref="GuildText" /> or
+    ///     <see cref="GuildForum" /> channel.
+    /// </summary>
+    PublicThread = 11,
+
     PrivateThread = 12,
 
     /// <summary>
@@ -46,8 +52,7 @@ public enum ChannelTypes
     ///     <see
     ///         href="https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ">
     ///         hub
-    ///     </see>
-    ///     containing the listed servers.
+    ///     </see> containing the listed servers.
     /// </summary>
     GuildDirectory = 14,
 

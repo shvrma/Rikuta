@@ -5,6 +5,16 @@ namespace Rikuta.Models.Permissions;
 /// <summary>
 ///     Represents a set of permissions given to some entity.
 /// </summary>
+/// <remarks>
+///     Beware that permissions given may not always behave as you expect
+///     it; given an example are
+///     <see
+///         href="https://discord.com/developers/docs/topics/permissions#implicit-permissions">
+///         Implicit Permissions
+///     </see>.
+///     Read about permissions system on the same page as for
+///     Implicit Permissions.
+/// </remarks>
 [PublicAPI]
 public record struct PermissionsString
 {
