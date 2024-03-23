@@ -21,6 +21,10 @@ namespace Rikuta.Models.Resources.Channel;
 ///     exist instead of sending as a normal (non-reply) message, default
 ///     true.
 /// </param>
+/// <seealso
+///     href="https://discord.com/developers/docs/resources/channel#message-types">
+///     Message Types
+/// </seealso>
 [PublicAPI]
 public record MessageReference(
     [property: JsonPropertyNameOverride("message_id")]

@@ -156,7 +156,7 @@ public record Message(
     [property: JsonPropertyNameOverride("attachments")]
     Attachment[] Attachments,
     [property: JsonPropertyNameOverride("embeds")]
-    Embed[] Embeds,
+    Embed.Embed[] Embeds,
     [property: JsonPropertyNameOverride("reactions")]
     Optional<MessageReaction[]> Reactions,
     [property: JsonPropertyNameOverride("nonce")]
